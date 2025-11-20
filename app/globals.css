@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #003B73;
+  --primary-dark: #002850;
+  --primary-light: #004D94;
+  --kenya-green: #0F9D58;
+  --kenya-red: #DC3545;
+  --slate: #475569;
+  --slate-light: #64748B;
+  --slate-dark: #334155;
+  --soft-white: #F8FAFC;
+  --soft-gray: #F1F5F9;
+  --data-cyan: #00A7C4;
+  --data-blue: #0066CC;
+  --data-green: #10B981;
+  --data-yellow: #F59E0B;
+  --data-red: #EF4444;
+}
+
+@layer base {
+  body {
+    @apply bg-soft-white text-slate antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-semibold text-primary;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl lg:text-5xl;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+
+  h4 {
+    @apply text-xl md:text-2xl;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-white rounded-2xl shadow-card hover:shadow-card-hover transition-shadow duration-200 p-6;
+  }
+
+  .btn-primary {
+    @apply bg-primary hover:bg-primary-dark text-white font-medium px-6 py-3 rounded-lg transition-colors duration-200;
+  }
+
+  .btn-secondary {
+    @apply bg-white hover:bg-soft-gray text-primary border border-primary/20 font-medium px-6 py-3 rounded-lg transition-colors duration-200;
+  }
+
+  .metric-value {
+    @apply font-mono text-3xl md:text-4xl font-bold;
+  }
+
+  .rank-badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+  }
+
+  .trend-up {
+    @apply text-data-green;
+  }
+
+  .trend-down {
+    @apply text-data-red;
+  }
+
+  .trend-neutral {
+    @apply text-slate-light;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
