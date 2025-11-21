@@ -6,7 +6,7 @@ import { EmbedConfig } from '@/types';
  * Generate embed code for a widget
  */
 export function generateEmbedCode(config: EmbedConfig): string {
-    const { widgetType, widgetId, width = 600, height = 400, theme = 'light' } = config;
+    const { widgetType, widgetId, width = 300, height = 300, theme = 'light' } = config;
 
     const baseUrl = typeof window !== 'undefined'
         ? window.location.origin

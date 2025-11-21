@@ -180,9 +180,9 @@ export default async function IndicatorPage({ params }: PageProps) {
                         </div>
 
                         {/* Trend Chart */}
-                        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                        <div className="bg-white p-4 md:p-6 rounded-xl shadow-sm border border-slate-200">
                             <h3 className="text-lg font-semibold text-primary mb-6">Historical Trend</h3>
-                            <div className="h-80 w-full">
+                            <div className="h-64 md:h-80 w-full overflow-hidden">
                                 <TrendSparkline
                                     data={indicator.trendData}
                                     width={800}
@@ -194,9 +194,9 @@ export default async function IndicatorPage({ params }: PageProps) {
 
                         {/* Regional Comparison */}
                         {comparisonData.length > 0 && (
-                            <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                            <div className="bg-white p-4 md:p-6 rounded-xl shadow-sm border border-slate-200">
                                 <h3 className="text-lg font-semibold text-primary mb-6">Regional Comparison</h3>
-                                <div className="h-80 w-full">
+                                <div className="h-64 md:h-80 w-full overflow-hidden">
                                     <BarChart data={comparisonData} />
                                 </div>
                             </div>
