@@ -61,7 +61,7 @@ export async function fetchTransparencyCPI(): Promise<CPIData | null> {
                         reject(error);
                     }
                 },
-                error: (error) => {
+                error: (error: Error) => {
                     console.error('Error parsing CSV:', error);
                     reject(error);
                 },
