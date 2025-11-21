@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
+import LanguageSwitcher from '@/components/ui/LanguageSwitcher';
+
 
 const navLinks = [
     { href: '/', label: 'Home' },
@@ -42,14 +44,19 @@ export default function Navigation() {
                                     key={link.href}
                                     href={link.href}
                                     className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 ${isActive
-                                            ? 'bg-primary text-white'
-                                            : 'text-slate hover:bg-soft-gray hover:text-primary'
+                                        ? 'bg-primary text-white'
+                                        : 'text-slate hover:bg-soft-gray hover:text-primary'
                                         }`}
                                 >
                                     {link.label}
                                 </Link>
                             );
                         })}
+
+                        {/* Language Switcher */}
+                        <div className="ml-4 pl-4 border-l border-slate/20">
+                            <LanguageSwitcher variant="button" />
+                        </div>
                     </div>
 
                     {/* Mobile menu button */}
@@ -78,8 +85,8 @@ export default function Navigation() {
                                     href={link.href}
                                     onClick={() => setMobileMenuOpen(false)}
                                     className={`block px-4 py-3 rounded-lg text-sm font-medium transition-colors duration-200 ${isActive
-                                            ? 'bg-primary text-white'
-                                            : 'text-slate hover:bg-soft-gray hover:text-primary'
+                                        ? 'bg-primary text-white'
+                                        : 'text-slate hover:bg-soft-gray hover:text-primary'
                                         }`}
                                 >
                                     {link.label}

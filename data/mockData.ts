@@ -26,6 +26,8 @@ export const keyIndicators: Indicator[] = [
         methodology: 'The CPI scores and ranks countries/territories based on how corrupt a country\'s public sector is perceived to be by experts and business executives. It is a composite index, a combination of 13 surveys and assessments of corruption.',
         unit: 'Score (0-100)',
         higherIsBetter: true,
+        lastUpdated: '2024-01-31',
+        updateFrequency: 'Annually',
     },
     {
         id: 'wgi-control-corruption-2022',
@@ -51,6 +53,8 @@ export const keyIndicators: Indicator[] = [
         methodology: 'Aggregate indicator combining responses on the quality of governance from surveys of enterprises, citizens and experts.',
         unit: 'Estimate (-2.5 to 2.5)',
         higherIsBetter: true,
+        lastUpdated: '2023-09-28',
+        updateFrequency: 'Annually',
     },
     {
         id: 'hdi-2022',
@@ -76,6 +80,8 @@ export const keyIndicators: Indicator[] = [
         methodology: 'The HDI is a summary measure of average achievement in key dimensions of human development: a long and healthy life, being knowledgeable and have a decent standard of living.',
         unit: 'Index (0-1)',
         higherIsBetter: true,
+        lastUpdated: '2024-03-13',
+        updateFrequency: 'Annually',
     },
     {
         id: 'gdp-per-capita-2023',
@@ -101,6 +107,8 @@ export const keyIndicators: Indicator[] = [
         methodology: 'GDP per capita is gross domestic product divided by midyear population. Data are in current U.S. dollars.',
         unit: 'USD',
         higherIsBetter: true,
+        lastUpdated: '2024-07-01',
+        updateFrequency: 'Quarterly',
     },
     {
         id: 'poverty-rate-2023',
@@ -126,6 +134,8 @@ export const keyIndicators: Indicator[] = [
         methodology: 'Poverty headcount ratio at national poverty lines (% of population).',
         unit: 'Percentage',
         higherIsBetter: false,
+        lastUpdated: '2024-04-15',
+        updateFrequency: 'Annually',
     },
     {
         id: 'sdg-index-2023',
@@ -151,6 +161,8 @@ export const keyIndicators: Indicator[] = [
         methodology: 'The SDG Index score can be interpreted as a percentage of SDG achievement. A score of 100 indicates that all SDGs have been achieved.',
         unit: 'Score (0-100)',
         higherIsBetter: true,
+        lastUpdated: '2023-06-20',
+        updateFrequency: 'Annually',
     },
 ];
 
@@ -196,6 +208,8 @@ export const sdgGoals: SDGGoal[] = [
         icon: '🏚️',
         progress: 52,
         status: 'moderate',
+        lastUpdated: '2024-06-20',
+        lastUpdated: '2024-06-20',
         indicators: [
             { id: 'sdg1-1', name: 'Poverty headcount ratio', value: 36.1, target: 0, unit: '%', year: 2023, progress: 52 },
             { id: 'sdg1-2', name: 'Social protection coverage', value: 18.5, target: 100, unit: '%', year: 2023, progress: 19 },
@@ -210,6 +224,7 @@ export const sdgGoals: SDGGoal[] = [
         icon: '🌾',
         progress: 48,
         status: 'off-track',
+        lastUpdated: '2024-06-20',
         indicators: [
             { id: 'sdg2-1', name: 'Prevalence of undernourishment', value: 28.5, target: 0, unit: '%', year: 2023, progress: 43 },
             { id: 'sdg2-2', name: 'Prevalence of stunting', value: 26.2, target: 0, unit: '%', year: 2023, progress: 48 },
@@ -224,6 +239,7 @@ export const sdgGoals: SDGGoal[] = [
         icon: '🏥',
         progress: 61,
         status: 'moderate',
+        lastUpdated: '2024-06-20',
         indicators: [
             { id: 'sdg3-1', name: 'Maternal mortality ratio', value: 342, target: 70, unit: 'per 100k', year: 2023, progress: 58 },
             { id: 'sdg3-2', name: 'Under-5 mortality rate', value: 41.2, target: 25, unit: 'per 1k', year: 2023, progress: 64 },
@@ -238,6 +254,7 @@ export const sdgGoals: SDGGoal[] = [
         icon: '📚',
         progress: 68,
         status: 'moderate',
+        lastUpdated: '2024-06-20',
         indicators: [
             { id: 'sdg4-1', name: 'Primary completion rate', value: 87.3, target: 100, unit: '%', year: 2023, progress: 87 },
             { id: 'sdg4-2', name: 'Literacy rate (15-24 years)', value: 82.6, target: 100, unit: '%', year: 2023, progress: 83 },
@@ -252,6 +269,7 @@ export const sdgGoals: SDGGoal[] = [
         icon: '⚖️',
         progress: 58,
         status: 'moderate',
+        lastUpdated: '2024-06-20',
         indicators: [
             { id: 'sdg5-1', name: 'Women in parliament', value: 24.4, target: 50, unit: '%', year: 2023, progress: 49 },
             { id: 'sdg5-2', name: 'Gender wage gap', value: 32.1, target: 0, unit: '%', year: 2023, progress: 36 },
@@ -266,6 +284,7 @@ export const sdgGoals: SDGGoal[] = [
         icon: '💧',
         progress: 54,
         status: 'moderate',
+        lastUpdated: '2024-06-20',
         indicators: [
             { id: 'sdg6-1', name: 'Access to safe drinking water', value: 63.2, target: 100, unit: '%', year: 2023, progress: 63 },
             { id: 'sdg6-2', name: 'Access to sanitation', value: 45.3, target: 100, unit: '%', year: 2023, progress: 45 },
@@ -280,6 +299,7 @@ export const sdgGoals: SDGGoal[] = [
         icon: '⚡',
         progress: 62,
         status: 'moderate',
+        lastUpdated: '2024-06-20',
         indicators: [
             { id: 'sdg7-1', name: 'Access to electricity', value: 75.3, target: 100, unit: '%', year: 2023, progress: 75 },
             { id: 'sdg7-2', name: 'Renewable energy share', value: 48.9, target: 100, unit: '%', year: 2023, progress: 49 },
@@ -294,6 +314,7 @@ export const sdgGoals: SDGGoal[] = [
         icon: '💼',
         progress: 56,
         status: 'moderate',
+        lastUpdated: '2024-06-20',
         indicators: [
             { id: 'sdg8-1', name: 'GDP growth rate', value: 5.3, target: 7, unit: '%', year: 2023, progress: 76 },
             { id: 'sdg8-2', name: 'Unemployment rate', value: 5.7, target: 0, unit: '%', year: 2023, progress: 43 },
@@ -308,6 +329,7 @@ export const sdgGoals: SDGGoal[] = [
         icon: '🏗️',
         progress: 51,
         status: 'moderate',
+        lastUpdated: '2024-06-20',
         indicators: [
             { id: 'sdg9-1', name: 'Mobile broadband subscriptions', value: 42.8, target: 100, unit: '%', year: 2023, progress: 43 },
             { id: 'sdg9-2', name: 'Manufacturing value added', value: 8.4, target: 20, unit: '% of GDP', year: 2023, progress: 42 },
@@ -322,6 +344,7 @@ export const sdgGoals: SDGGoal[] = [
         icon: '📊',
         progress: 47,
         status: 'off-track',
+        lastUpdated: '2024-06-20',
         indicators: [
             { id: 'sdg10-1', name: 'Gini coefficient', value: 40.8, target: 30, unit: 'index', year: 2023, progress: 42 },
             { id: 'sdg10-2', name: 'Income share (bottom 40%)', value: 15.2, target: 25, unit: '%', year: 2023, progress: 61 },
@@ -336,6 +359,7 @@ export const sdgGoals: SDGGoal[] = [
         icon: '🏙️',
         progress: 53,
         status: 'moderate',
+        lastUpdated: '2024-06-20',
         indicators: [
             { id: 'sdg11-1', name: 'Urban population in slums', value: 54.7, target: 0, unit: '%', year: 2023, progress: 45 },
             { id: 'sdg11-2', name: 'Access to public transport', value: 38.2, target: 100, unit: '%', year: 2023, progress: 38 },
@@ -350,6 +374,7 @@ export const sdgGoals: SDGGoal[] = [
         icon: '♻️',
         progress: 49,
         status: 'moderate',
+        lastUpdated: '2024-06-20',
         indicators: [
             { id: 'sdg12-1', name: 'Municipal waste recycled', value: 8.3, target: 50, unit: '%', year: 2023, progress: 17 },
             { id: 'sdg12-2', name: 'Material footprint per capita', value: 5.2, target: 8, unit: 'tonnes', year: 2023, progress: 65 },
@@ -364,6 +389,7 @@ export const sdgGoals: SDGGoal[] = [
         icon: '🌍',
         progress: 64,
         status: 'moderate',
+        lastUpdated: '2024-06-20',
         indicators: [
             { id: 'sdg13-1', name: 'CO2 emissions per capita', value: 0.4, target: 0, unit: 'tonnes', year: 2023, progress: 92 },
             { id: 'sdg13-2', name: 'Climate adaptation spending', value: 2.1, target: 5, unit: '% of GDP', year: 2023, progress: 42 },
@@ -378,6 +404,7 @@ export const sdgGoals: SDGGoal[] = [
         icon: '🐠',
         progress: 58,
         status: 'moderate',
+        lastUpdated: '2024-06-20',
         indicators: [
             { id: 'sdg14-1', name: 'Marine protected areas', value: 7.8, target: 10, unit: '% of territorial waters', year: 2023, progress: 78 },
             { id: 'sdg14-2', name: 'Fish stocks sustainability', value: 52.3, target: 100, unit: '%', year: 2023, progress: 52 },
@@ -392,6 +419,7 @@ export const sdgGoals: SDGGoal[] = [
         icon: '🌳',
         progress: 66,
         status: 'on-track',
+        lastUpdated: '2024-06-20',
         indicators: [
             { id: 'sdg15-1', name: 'Forest area', value: 7.2, target: 10, unit: '% of land area', year: 2023, progress: 72 },
             { id: 'sdg15-2', name: 'Protected areas', value: 12.7, target: 17, unit: '% of land area', year: 2023, progress: 75 },
@@ -406,6 +434,7 @@ export const sdgGoals: SDGGoal[] = [
         icon: '⚖️',
         progress: 52,
         status: 'moderate',
+        lastUpdated: '2024-06-20',
         indicators: [
             { id: 'sdg16-1', name: 'Homicide rate', value: 4.9, target: 0, unit: 'per 100k', year: 2023, progress: 51 },
             { id: 'sdg16-2', name: 'Government effectiveness', value: -0.42, target: 2.5, unit: 'estimate', year: 2023, progress: 42 },
@@ -420,6 +449,7 @@ export const sdgGoals: SDGGoal[] = [
         icon: '🤝',
         progress: 55,
         status: 'moderate',
+        lastUpdated: '2024-06-20',
         indicators: [
             { id: 'sdg17-1', name: 'ODA received', value: 3.2, target: 5, unit: '% of GNI', year: 2023, progress: 64 },
             { id: 'sdg17-2', name: 'Internet users', value: 29.5, target: 100, unit: '%', year: 2023, progress: 30 },

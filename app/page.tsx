@@ -3,7 +3,8 @@ import { Metadata } from 'next';
 import MetricCard from '@/components/cards/MetricCard';
 import BarChart from '@/components/charts/BarChart';
 import StructuredData from '@/components/seo/StructuredData';
-import { homeMetrics, regionalComparisons } from '@/data/mockData';
+import { homeMetrics, regionalComparisons, keyIndicators } from '@/data/mockData';
+import { indicatorTooltips } from '@/data/tooltips';
 import { ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -83,6 +84,132 @@ export default function HomePage() {
                     </section>
                 </header>
 
+                {/* Data Freshness Banner */}
+                <div className="bg-data-cyan/5 border-l-4 border-data-cyan py-3">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <p className="text-sm text-slate flex items-center gap-2">
+                            <span className="font-semibold">Data Status:</span>
+                            All indicators updated as of November 2024. Data sources are refreshed according to their publication schedules.
+                        </p>
+                    </div>
+                </div>
+
+                {/* Kenya's Story - Narrative Section */}
+                <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                    <div className="text-center mb-12">
+                        <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-4">
+                            Kenya's Story in Numbers
+                        </h2>
+                        <p className="text-lg text-slate-light max-w-3xl mx-auto">
+                            Kenya stands at a crossroads of opportunity and challenge. As East Africa's economic hub,
+                            the country has made remarkable progress in some areas while facing persistent challenges in others.
+                        </p>
+                    </div>
+
+                    {/* Strengths and Challenges Grid */}
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+                        {/* Strengths */}
+                        <div>
+                            <h3 className="text-2xl font-heading font-semibold text-data-green mb-6 flex items-center gap-2">
+                                <span className="text-3xl">✓</span>
+                                Kenya's Strengths
+                            </h3>
+                            <div className="space-y-4">
+                                <div className="card bg-gradient-to-br from-data-green/5 to-transparent border-l-4 border-data-green">
+                                    <h4 className="font-semibold text-primary mb-2">Leading in Climate Action</h4>
+                                    <p className="text-sm text-slate-light mb-2">
+                                        Kenya demonstrates strong commitment to environmental sustainability with low CO2 emissions and significant renewable energy adoption.
+                                    </p>
+                                    <div className="flex items-center gap-4 text-xs text-slate-light">
+                                        <span className="font-mono font-semibold text-data-green">64% progress</span>
+                                        <span>•</span>
+                                        <span>48.9% renewable energy share</span>
+                                    </div>
+                                </div>
+
+                                <div className="card bg-gradient-to-br from-data-green/5 to-transparent border-l-4 border-data-green">
+                                    <h4 className="font-semibold text-primary mb-2">Quality Education Progress</h4>
+                                    <p className="text-sm text-slate-light mb-2">
+                                        Kenya has made significant strides in education with high primary completion rates and improving literacy.
+                                    </p>
+                                    <div className="flex items-center gap-4 text-xs text-slate-light">
+                                        <span className="font-mono font-semibold text-data-green">68% progress</span>
+                                        <span>•</span>
+                                        <span>87.3% primary completion</span>
+                                    </div>
+                                </div>
+
+                                <div className="card bg-gradient-to-br from-data-green/5 to-transparent border-l-4 border-data-green">
+                                    <h4 className="font-semibold text-primary mb-2">Economic Growth Momentum</h4>
+                                    <p className="text-sm text-slate-light mb-2">
+                                        Despite global challenges, Kenya maintains steady economic growth and rising GDP per capita.
+                                    </p>
+                                    <div className="flex items-center gap-4 text-xs text-slate-light">
+                                        <span className="font-mono font-semibold text-data-green">$2,099</span>
+                                        <span>•</span>
+                                        <span>5.3% GDP growth rate</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Challenges */}
+                        <div>
+                            <h3 className="text-2xl font-heading font-semibold text-data-red mb-6 flex items-center gap-2">
+                                <span className="text-3xl">!</span>
+                                Key Challenges
+                            </h3>
+                            <div className="space-y-4">
+                                <div className="card bg-gradient-to-br from-data-red/5 to-transparent border-l-4 border-data-red">
+                                    <h4 className="font-semibold text-primary mb-2">Corruption Remains a Major Concern</h4>
+                                    <p className="text-sm text-slate-light mb-2">
+                                        Kenya continues to struggle with high levels of perceived corruption in the public sector.
+                                    </p>
+                                    <div className="flex items-center gap-4 text-xs text-slate-light">
+                                        <span className="font-mono font-semibold text-data-red">31/100 score</span>
+                                        <span>•</span>
+                                        <span>Rank 126/180</span>
+                                    </div>
+                                </div>
+
+                                <div className="card bg-gradient-to-br from-data-red/5 to-transparent border-l-4 border-data-red">
+                                    <h4 className="font-semibold text-primary mb-2">Persistent Poverty and Inequality</h4>
+                                    <p className="text-sm text-slate-light mb-2">
+                                        Over one-third of Kenyans still live below the poverty line, with significant regional disparities.
+                                    </p>
+                                    <div className="flex items-center gap-4 text-xs text-slate-light">
+                                        <span className="font-mono font-semibold text-data-red">36.1%</span>
+                                        <span>•</span>
+                                        <span>Rank 142/170</span>
+                                    </div>
+                                </div>
+
+                                <div className="card bg-gradient-to-br from-data-red/5 to-transparent border-l-4 border-data-red">
+                                    <h4 className="font-semibold text-primary mb-2">Food Security and Nutrition Gaps</h4>
+                                    <p className="text-sm text-slate-light mb-2">
+                                        Kenya faces ongoing challenges with hunger and malnutrition, particularly in arid and semi-arid regions.
+                                    </p>
+                                    <div className="flex items-center gap-4 text-xs text-slate-light">
+                                        <span className="font-mono font-semibold text-data-red">48% progress</span>
+                                        <span>•</span>
+                                        <span>Off-track for 2030</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Outlook */}
+                    <div className="card bg-gradient-to-r from-primary/5 to-data-cyan/5 border-t-4 border-primary">
+                        <h3 className="text-xl font-heading font-semibold text-primary mb-3">Looking Ahead</h3>
+                        <p className="text-slate-light leading-relaxed">
+                            Kenya's young, dynamic population and strategic investments in technology, infrastructure, and renewable energy
+                            position it well for future growth. Success will depend on strengthening governance, reducing inequality, and
+                            ensuring that economic growth translates into improved living standards for all Kenyans.
+                        </p>
+                    </div>
+                </section>
+
                 {/* Key Highlights Section */}
                 <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
                     <div className="mb-12">
@@ -95,16 +222,35 @@ export default function HomePage() {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {homeMetrics.map((metric, index) => (
-                            <MetricCard
-                                key={index}
-                                title={metric.title}
-                                value={metric.value}
-                                rank={metric.rank}
-                                trend={metric.trend}
-                                change={metric.change}
-                            />
-                        ))}
+                        {homeMetrics.map((metric, index) => {
+                            // Find the corresponding indicator for detailed info
+                            const indicator = keyIndicators.find(ind =>
+                                ind.name === metric.title ||
+                                ind.name.includes(metric.title.split(' ')[0])
+                            );
+
+                            // Get tooltip content
+                            const tooltipContent = indicator && indicatorTooltips[indicator.id];
+
+                            return (
+                                <MetricCard
+                                    key={index}
+                                    title={metric.title}
+                                    value={metric.value}
+                                    rank={metric.rank}
+                                    trend={metric.trend}
+                                    change={metric.change}
+                                    lastUpdated={indicator?.lastUpdated}
+                                    tooltipContent={tooltipContent?.brief}
+                                    detailedInfo={tooltipContent ? {
+                                        description: tooltipContent.detailed,
+                                        methodology: tooltipContent.methodology || '',
+                                        source: indicator?.source || '',
+                                        sourceUrl: indicator?.sourceUrl,
+                                    } : undefined}
+                                />
+                            );
+                        })}
                     </div>
                 </section>
 
