@@ -209,7 +209,6 @@ export const sdgGoals: SDGGoal[] = [
         progress: 52,
         status: 'moderate',
         lastUpdated: '2024-06-20',
-        lastUpdated: '2024-06-20',
         indicators: [
             { id: 'sdg1-1', name: 'Poverty headcount ratio', value: 36.1, target: 0, unit: '%', year: 2023, progress: 52 },
             { id: 'sdg1-2', name: 'Social protection coverage', value: 18.5, target: 100, unit: '%', year: 2023, progress: 19 },

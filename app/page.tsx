@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import MetricCard from '@/components/cards/MetricCard';
 import BarChart from '@/components/charts/BarChart';
 import StructuredData from '@/components/seo/StructuredData';
-import { homeMetrics, regionalComparisons, keyIndicators } from '@/data/mockData';
+import { getKeyIndicators } from '@/lib/dataService';
 import { indicatorTooltips } from '@/data/tooltips';
 import { ArrowRight } from 'lucide-react';
 
@@ -18,8 +18,8 @@ export const metadata: Metadata = {
     },
 };
 
-// Revalidate every 24 hours for fresh data
-export const revalidate = 86400;
+// Revalidate every 6 hours for fresh data
+export const revalidate = 21600;
 
 const categories = [
     { name: 'Governance', slug: 'governance', icon: '⚖️', color: 'bg-blue-500' },
@@ -32,7 +32,35 @@ const categories = [
     { name: 'Corruption', slug: 'corruption', icon: '🔍', color: 'bg-orange-500' },
 ];
 
-export default function HomePage() {
+export default async function HomePage() {
+    // Fetch real data from APIs
+    const keyIndicators = await getKeyIndicators();
+
+    // Create home metrics from key indicators
+    const homeMetrics = keyIndicators.slice(0, 6).map(indicator => ({
+        title: indicator.name,
+        value: indicator.score,
+        rank: `${indicator.rank}/${indicator.totalCountries}`,
+        trend: indicator.trend,
+        change: indicator.trendData.length >= 2
+            ? `${indicator.trendData[indicator.trendData.length - 1].value - indicator.trendData[indicator.trendData.length - 2].value > 0 ? '+' : ''}${(indicator.trendData[indicator.trendData.length - 1].value - indicator.trendData[indicator.trendData.length - 2].value).toFixed(1)}`
+            : undefined,
+        category: indicator.category,
+    }));
+
+    // Regional comparisons (simplified for now - can be enhanced later)
+    const regionalComparisons: Record<string, { country: string; value: number }[]> = {
+        'corruption-perceptions-index': [
+            { country: 'Kenya', value: 31 },
+            { country: 'Rwanda', value: 51 },
+            { country: 'Tanzania', value: 38 },
+            { country: 'Uganda', value: 26 },
+            { country: 'East Africa Avg', value: 37 },
+            { country: 'Africa Avg', value: 33 },
+            { country: 'World Avg', value: 43 },
+        ],
+    };
+
     return (
         <>
             <StructuredData type="organization" />
