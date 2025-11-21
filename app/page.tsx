@@ -3,10 +3,11 @@ import { Metadata } from 'next';
 import MetricCard from '@/components/cards/MetricCard';
 import BarChart from '@/components/charts/BarChart';
 import StructuredData from '@/components/seo/StructuredData';
-import { getKeyIndicators } from '@/lib/dataService';
+import { getKeyIndicators, getRegionalHDIComparison } from '@/lib/dataService';
 import { indicatorTooltips } from '@/data/tooltips';
-import { regionalComparisons } from '@/data/staticData';
+import { regionalComparisons as staticRegionalComparisons } from '@/data/staticData';
 import { ArrowRight } from 'lucide-react';
+import axios from 'axios';
 
 export const metadata: Metadata = {
     title: 'Kenya Ranked',
@@ -37,6 +38,9 @@ export default async function HomePage() {
     // Fetch real data from APIs
     const keyIndicators = await getKeyIndicators();
 
+    // Fetch regional HDI comparison data from HDRO API
+    const hdiComparisonData = await getRegionalHDIComparison();
+
     // Create home metrics from key indicators
     const homeMetrics = keyIndicators.slice(0, 6).map(indicator => ({
         title: indicator.name,
@@ -48,6 +52,19 @@ export default async function HomePage() {
             : undefined,
         category: indicator.category,
     }));
+
+    // Combine dynamic HDI data with static data for other indicators
+    const regionalComparisons: Record<string, { country: string; value: number }[]> = {
+        ...staticRegionalComparisons,
+        'human-development-index': hdiComparisonData,
+    };
+
+
+    const myOwnHdiFetcher = async () => {
+        const hdiData = await axios.get('/api/hdi');
+        console.log(hdiData)
+        return hdiData;
+    }
 
 
     return (

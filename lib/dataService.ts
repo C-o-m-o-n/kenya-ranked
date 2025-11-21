@@ -106,3 +106,12 @@ export async function getSDGGoalBySlug(slug: string): Promise<SDGGoal | undefine
     const goals = await getAllSDGGoals();
     return goals.find(goal => goal.slug === slug);
 }
+
+/**
+ * Get regional HDI comparison data from HDRO API
+ */
+export async function getRegionalHDIComparison() {
+    const { fetchRegionalHDIComparison } = await import('./dataFetchers/undpData');
+    console.log('Fetching regional HDI comparison data...', fetchRegionalHDIComparison);
+    return getCachedData('regionalHDIComparison', fetchRegionalHDIComparison, 86400000); // Cache for 24 hours
+}
