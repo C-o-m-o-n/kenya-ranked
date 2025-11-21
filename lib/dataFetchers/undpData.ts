@@ -1,14 +1,8 @@
-// UNDP HDI Data Fetcher
-// Downloads and parses real HDI data from UNDP Human Development Reports
+// UNDP HDI Data Fetcher using HDRO Data API
+// Fetches real HDI data from UNDP Human Development Reports API
 
-const UNDP_DATA_URLS = {
-    // HDI Trends 1990-2023 (Excel format - we'll need to parse)
-    HDI_TRENDS: 'https://hdr.undp.org/sites/default/files/2025_HDR/HDR25_Statistical_Annex_HDI_Trends_Table.xlsx',
-    // All composite indices time series (CSV format - easier to parse)
-    ALL_INDICES_CSV: 'https://hdr.undp.org/sites/default/files/2025_HDR/HDR25_Composite_indices_complete_time_series.csv',
-    // HDI Table with components
-    HDI_TABLE: 'https://hdr.undp.org/sites/default/files/2025_HDR/HDR25_Statistical_Annex_HDI_Table.xlsx',
-};
+const HDRO_API_BASE = 'https://hdrdata.org/api/CompositeIndices';
+const HDRO_API_KEY = process.env.HDRO_API_KEY || '';
 
 interface HDIData {
     country: string;
@@ -18,56 +12,56 @@ interface HDIData {
     rank?: number;
 }
 
+interface HDROApiResponse {
+    country: string;
+    dimension: string;
+    index: string;
+    indicator: string;
+    year: string;
+    value: string;
+}
+
 /**
- * Fetch and parse HDI CSV data from UNDP
+ * Fetch and parse HDI data from HDRO Data API
  * Note: This is a server-side only function
  */
 export async function fetchUNDPHDIData(): Promise<HDIData[]> {
     try {
-        const response = await fetch(UNDP_DATA_URLS.ALL_INDICES_CSV, {
+        const url = `${HDRO_API_BASE}/query?apikey=${HDRO_API_KEY}&countryOrAggregation=KEN`;
+
+        const response = await fetch(url, {
             next: { revalidate: 86400 } // Cache for 24 hours
         });
 
         if (!response.ok) {
-            throw new Error(`Failed to fetch UNDP data: ${response.statusText}`);
+            throw new Error(`Failed to fetch HDRO data: ${response.statusText}`);
         }
 
-        const csvText = await response.text();
-        const lines = csvText.split('\n');
-        const headers = lines[0].split(',').map(h => h.trim().replace(/"/g, ''));
+        const data: HDROApiResponse[] = await response.json();
 
-        const data: HDIData[] = [];
+        // Filter for HDI values only
+        const hdiData: HDIData[] = data
+            .filter(item =>
+                item.index === 'HDI - Human Development Index' &&
+                item.indicator === 'hdi - Human Development Index (value)' &&
+                item.value &&
+                item.value !== '..'
+            )
+            .map(item => ({
+                country: 'Kenya',
+                iso3: 'KEN',
+                year: parseInt(item.year),
+                hdi: parseFloat(item.value),
+            }))
+            .sort((a, b) => b.year - a.year);
 
-        // Parse CSV data
-        for (let i = 1; i < lines.length; i++) {
-            const line = lines[i].trim();
-            if (!line) continue;
-
-            const values = line.split(',').map(v => v.trim().replace(/"/g, ''));
-
-            // Find Kenya data
-            const countryIndex = headers.indexOf('country');
-            const iso3Index = headers.indexOf('iso3');
-            const yearIndex = headers.indexOf('year');
-            const hdiIndex = headers.indexOf('hdi');
-
-            if (values[iso3Index] === 'KEN' && values[hdiIndex] && values[hdiIndex] !== '..') {
-                data.push({
-                    country: values[countryIndex] || 'Kenya',
-                    iso3: values[iso3Index],
-                    year: parseInt(values[yearIndex]) || 2023,
-                    hdi: parseFloat(values[hdiIndex]) || 0,
-                });
-            }
+        if (hdiData.length === 0) {
+            throw new Error('No HDI data found for Kenya');
         }
 
-        if (data.length === 0) {
-            throw new Error('No data found for Kenya');
-        }
-
-        return data.sort((a, b) => b.year - a.year);
+        return hdiData;
     } catch (error) {
-        console.error('Error fetching UNDP HDI data:', error);
+        console.error('Error fetching HDRO HDI data:', error);
         // Return fallback data
         return [
             { country: 'Kenya', iso3: 'KEN', year: 2023, hdi: 0.601, rank: 146 },
