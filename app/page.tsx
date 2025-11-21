@@ -5,6 +5,7 @@ import BarChart from '@/components/charts/BarChart';
 import StructuredData from '@/components/seo/StructuredData';
 import { getKeyIndicators } from '@/lib/dataService';
 import { indicatorTooltips } from '@/data/tooltips';
+import { regionalComparisons } from '@/data/staticData';
 import { ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -39,7 +40,7 @@ export default async function HomePage() {
     // Create home metrics from key indicators
     const homeMetrics = keyIndicators.slice(0, 6).map(indicator => ({
         title: indicator.name,
-        value: indicator.score,
+        value: typeof indicator.score === 'number' ? indicator.score.toLocaleString('en-US', { maximumFractionDigits: 2 }) : indicator.score,
         rank: `${indicator.rank}/${indicator.totalCountries}`,
         trend: indicator.trend,
         change: indicator.trendData.length >= 2
@@ -48,18 +49,6 @@ export default async function HomePage() {
         category: indicator.category,
     }));
 
-    // Regional comparisons (simplified for now - can be enhanced later)
-    const regionalComparisons: Record<string, { country: string; value: number }[]> = {
-        'corruption-perceptions-index': [
-            { country: 'Kenya', value: 31 },
-            { country: 'Rwanda', value: 51 },
-            { country: 'Tanzania', value: 38 },
-            { country: 'Uganda', value: 26 },
-            { country: 'East Africa Avg', value: 37 },
-            { country: 'Africa Avg', value: 33 },
-            { country: 'World Avg', value: 43 },
-        ],
-    };
 
     return (
         <>

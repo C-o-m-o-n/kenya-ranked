@@ -97,6 +97,7 @@ export interface InfoContent {
     detailed: string; // For modals (full explanation)
     whyItMatters: string;
     methodology?: string;
+    source?: string;
     sourceUrl?: string;
 }
 

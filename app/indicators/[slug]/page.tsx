@@ -1,155 +1,262 @@
+import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getIndicatorBySlug, regionalComparisons } from '@/data/mockData';
-import LineChart from '@/components/charts/LineChart';
+import Link from 'next/link';
+import { ArrowLeft, Info, Calendar, TrendingUp, TrendingDown, Minus, Globe, Download, Share2, ArrowRight } from 'lucide-react';
+import { getIndicatorBySlug } from '@/lib/dataService';
+import { regionalComparisons } from '@/data/staticData';
+import TrendSparkline from '@/components/charts/TrendSparkline';
 import BarChart from '@/components/charts/BarChart';
-import Accordion from '@/components/ui/Accordion';
-import SourceDisclaimer from '@/components/ui/SourceDisclaimer';
-import { ArrowUp, ArrowDown, Minus } from 'lucide-react';
-import { calculateChange } from '@/lib/utils';
+import InfoTooltip from '@/components/ui/InfoTooltip';
+import ClientInfoModal from '@/components/ui/ClientInfoModal';
+import LastUpdated from '@/components/ui/LastUpdated';
+import DataFreshness from '@/components/ui/DataFreshness';
+import ExportButton from '@/components/ui/ExportButton';
+import EmbedCode from '@/components/ui/EmbedCode';
 
-export default function IndicatorDetailPage({
-    params,
-}: {
-    params: { slug: string };
-}) {
-    const indicator = getIndicatorBySlug(params.slug);
+interface PageProps {
+    params: {
+        slug: string;
+    };
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+    const indicator = await getIndicatorBySlug(params.slug);
+
+    if (!indicator) {
+        return {
+            title: 'Indicator Not Found | Kenya Ranked',
+        };
+    }
+
+    return {
+        title: `${indicator.name} - Kenya Statistics | Kenya Ranked`,
+        description: indicator.description,
+    };
+}
+
+// Revalidate every 6 hours
+export const revalidate = 21600;
+
+export default async function IndicatorPage({ params }: PageProps) {
+    const indicator = await getIndicatorBySlug(params.slug);
 
     if (!indicator) {
         notFound();
     }
-
-    const TrendIcon =
-        indicator.trend === 'up'
-            ? ArrowUp
-            : indicator.trend === 'down'
-                ? ArrowDown
-                : Minus;
-    const trendColor =
-        indicator.trend === 'up'
-            ? 'text-data-green'
-            : indicator.trend === 'down'
-                ? 'text-data-red'
-                : 'text-slate-light';
-
-    const previousValue =
-        indicator.trendData[indicator.trendData.length - 2]?.value;
-    const change = previousValue
-        ? calculateChange(indicator.score, previousValue)
-        : null;
 
     const comparisonData = regionalComparisons[indicator.slug] || [];
 
     return (
         <div className="min-h-screen bg-soft-white py-12">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                {/* Header */}
-                <div className="mb-12">
-                    <div className="flex items-center gap-2 mb-4">
-                        <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-data-cyan/10 text-data-cyan capitalize">
-                            {indicator.category}
-                        </span>
-                    </div>
-                    <h1 className="text-4xl md:text-5xl font-heading font-bold text-primary mb-4">
-                        {indicator.name}
-                    </h1>
-                    <p className="text-lg text-slate-light max-w-3xl">
-                        {indicator.description}
-                    </p>
-                </div>
+                {/* Breadcrumb */}
+                <nav className="mb-8">
+                    <Link
+                        href="/indicators"
+                        className="inline-flex items-center text-slate-500 hover:text-primary transition-colors"
+                    >
+                        <ArrowLeft className="w-4 h-4 mr-2" />
+                        Back to all indicators
+                    </Link>
+                </nav>
 
-                {/* Summary Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-                    <div className="card">
-                        <p className="text-sm font-medium text-slate-light mb-2">
-                            Kenya's Score
-                        </p>
-                        <p className="metric-value text-primary">
-                            {indicator.score}
-                            {indicator.unit && (
-                                <span className="text-lg text-slate-light ml-2">
-                                    {indicator.unit}
+                {/* Header Section */}
+                <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8 mb-8">
+                    <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                        <div>
+                            <div className="flex items-center gap-3 mb-2">
+                                <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium capitalize
+                                    ${indicator.category === 'governance' ? 'bg-blue-100 text-blue-800' :
+                                        indicator.category === 'economy' ? 'bg-green-100 text-green-800' :
+                                            indicator.category === 'society' ? 'bg-purple-100 text-purple-800' :
+                                                'bg-slate-100 text-slate-800'}`}>
+                                    {indicator.category}
                                 </span>
-                            )}
-                        </p>
-                    </div>
-
-                    <div className="card">
-                        <p className="text-sm font-medium text-slate-light mb-2">
-                            Global Rank
-                        </p>
-                        <p className="metric-value text-primary">
-                            {indicator.rank}
-                            <span className="text-lg text-slate-light">
-                                /{indicator.totalCountries}
-                            </span>
-                        </p>
-                    </div>
-
-                    <div className="card">
-                        <p className="text-sm font-medium text-slate-light mb-2">
-                            Change from Last Year
-                        </p>
-                        <div className={`flex items-center gap-2 ${trendColor}`}>
-                            <TrendIcon className="h-8 w-8" />
-                            {change && (
-                                <span className="text-2xl font-bold font-mono">{change}</span>
-                            )}
+                                <DataFreshness lastUpdated={indicator.lastUpdated} />
+                            </div>
+                            <h1 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-4 flex items-center gap-3">
+                                {indicator.name}
+                                <InfoTooltip
+                                    content={{
+                                        title: indicator.name,
+                                        brief: indicator.description,
+                                        detailed: indicator.description, // Using description for detailed too as we don't have separate detailed text yet
+                                        whyItMatters: "This indicator is crucial for understanding Kenya's development progress.",
+                                        methodology: indicator.methodology,
+                                        source: indicator.source,
+                                        sourceUrl: indicator.sourceUrl
+                                    }}
+                                />
+                            </h1>
+                            <p className="text-lg text-slate-600 max-w-3xl">
+                                {indicator.description}
+                            </p>
+                        </div>
+                        <div className="flex gap-3">
+                            <ExportButton
+                                data={[indicator]}
+                                filename={indicator.slug}
+                                variant="button"
+                            />
+                            <ClientInfoModal
+                                trigger={
+                                    <button className="btn-secondary flex items-center gap-2">
+                                        <Info className="w-4 h-4" />
+                                        Details
+                                    </button>
+                                }
+                                title={indicator.name}
+                            >
+                                <div className="space-y-4">
+                                    <div>
+                                        <h4 className="font-semibold text-primary mb-1">Description</h4>
+                                        <p className="text-slate-600">{indicator.description}</p>
+                                    </div>
+                                    <div>
+                                        <h4 className="font-semibold text-primary mb-1">Why it matters</h4>
+                                        <p className="text-slate-600">Understanding this metric helps in assessing the country's performance relative to regional and global standards.</p>
+                                    </div>
+                                    <div>
+                                        <h4 className="font-semibold text-primary mb-1">Methodology</h4>
+                                        <p className="text-slate-600">{indicator.methodology}</p>
+                                    </div>
+                                    <div>
+                                        <h4 className="font-semibold text-primary mb-1">Source</h4>
+                                        <p className="text-slate-600">{indicator.source}</p>
+                                        {indicator.sourceUrl && (
+                                            <a href={indicator.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline text-sm">
+                                                Visit Source
+                                            </a>
+                                        )}
+                                    </div>
+                                </div>
+                            </ClientInfoModal>
                         </div>
                     </div>
+                </div>
 
-                    <div className="card">
-                        <p className="text-sm font-medium text-slate-light mb-2">Year</p>
-                        <p className="metric-value text-primary">{indicator.year}</p>
+                {/* Main Content Grid */}
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    {/* Left Column: Key Stats & Trend */}
+                    <div className="lg:col-span-2 space-y-8">
+                        {/* Key Statistics Cards */}
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                                <div className="text-sm text-slate-500 mb-1">Current Value</div>
+                                <div className="text-3xl font-bold text-primary">
+                                    {indicator.score.toLocaleString()}
+                                    <span className="text-sm font-normal text-slate-400 ml-1">{indicator.unit}</span>
+                                </div>
+                                <div className="mt-2 flex items-center text-sm">
+                                    <span className="text-slate-400">Year: {indicator.year}</span>
+                                </div>
+                            </div>
+
+                            <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                                <div className="text-sm text-slate-500 mb-1">Global Rank</div>
+                                <div className="text-3xl font-bold text-primary">
+                                    #{indicator.rank}
+                                    <span className="text-sm font-normal text-slate-400 ml-1">/ {indicator.totalCountries}</span>
+                                </div>
+                                <div className="mt-2 text-sm text-slate-400">
+                                    Out of {indicator.totalCountries} countries
+                                </div>
+                            </div>
+
+                            <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                                <div className="text-sm text-slate-500 mb-1">Trend</div>
+                                <div className={`text-3xl font-bold flex items-center gap-2
+                                    ${indicator.trend === 'up' ? 'text-green-600' :
+                                        indicator.trend === 'down' ? 'text-red-600' : 'text-slate-600'}`}>
+                                    {indicator.trend === 'up' ? <TrendingUp className="w-6 h-6" /> :
+                                        indicator.trend === 'down' ? <TrendingDown className="w-6 h-6" /> :
+                                            <Minus className="w-6 h-6" />}
+                                    <span className="capitalize">{indicator.trend}</span>
+                                </div>
+                                <div className="mt-2 text-sm text-slate-400">
+                                    vs Previous Year
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Trend Chart */}
+                        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                            <h3 className="text-lg font-semibold text-primary mb-6">Historical Trend</h3>
+                            <div className="h-80 w-full">
+                                <TrendSparkline
+                                    data={indicator.trendData}
+                                    width={800}
+                                    height={300}
+                                    color={indicator.trend === 'up' ? '#10B981' : '#EF4444'}
+                                />
+                            </div>
+                        </div>
+
+                        {/* Regional Comparison */}
+                        {comparisonData.length > 0 && (
+                            <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                                <h3 className="text-lg font-semibold text-primary mb-6">Regional Comparison</h3>
+                                <div className="h-80 w-full">
+                                    <BarChart data={comparisonData} />
+                                </div>
+                            </div>
+                        )}
+                    </div>
+
+                    {/* Right Column: Meta Info */}
+                    <div className="space-y-8">
+                        {/* Source Card */}
+                        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                            <h3 className="text-lg font-semibold text-primary mb-4 flex items-center gap-2">
+                                <Globe className="w-5 h-5" />
+                                Source Information
+                            </h3>
+                            <div className="space-y-4">
+                                <div>
+                                    <div className="text-sm text-slate-500 mb-1">Data Source</div>
+                                    <div className="font-medium text-slate-900">{indicator.source}</div>
+                                </div>
+                                <div>
+                                    <div className="text-sm text-slate-500 mb-1">Last Updated</div>
+                                    <LastUpdated date={indicator.lastUpdated} />
+                                </div>
+                                <div>
+                                    <div className="text-sm text-slate-500 mb-1">Update Frequency</div>
+                                    <div className="font-medium text-slate-900">{indicator.updateFrequency || 'Annually'}</div>
+                                </div>
+                                {indicator.sourceUrl && (
+                                    <a
+                                        href={indicator.sourceUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center text-primary hover:text-primary-dark font-medium text-sm mt-2"
+                                    >
+                                        Visit Source Website
+                                        <ArrowRight className="w-4 h-4 ml-1" />
+                                    </a>
+                                )}
+                            </div>
+                        </div>
+
+                        {/* Embed Widget */}
+                        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                            <h3 className="text-lg font-semibold text-primary mb-4 flex items-center gap-2">
+                                <Share2 className="w-5 h-5" />
+                                Share & Embed
+                            </h3>
+                            <p className="text-sm text-slate-500 mb-4">
+                                Use this code to embed this indicator chart on your website.
+                            </p>
+                            <EmbedCode
+                                config={{
+                                    widgetType: 'chart',
+                                    widgetId: indicator.slug,
+                                    height: 400
+                                }}
+                            />
+                        </div>
                     </div>
                 </div>
-
-                {/* Trend Chart */}
-                <div className="card mb-12">
-                    <LineChart
-                        data={indicator.trendData}
-                        title="Historical Trend"
-                        yAxisLabel={indicator.unit}
-                        color="#00A7C4"
-                    />
-                </div>
-
-                {/* Regional Comparison */}
-                {comparisonData.length > 0 && (
-                    <div className="card mb-12">
-                        <BarChart
-                            data={comparisonData}
-                            title="Kenya vs Region Comparison"
-                            yAxisLabel={indicator.unit}
-                        />
-                    </div>
-                )}
-
-                {/* Explanation Accordions */}
-                <div className="space-y-4 mb-12">
-                    <Accordion title="What does this indicator measure?" defaultOpen>
-                        <p>{indicator.description}</p>
-                    </Accordion>
-
-                    <Accordion title="Why does it matter?">
-                        <p>
-                            This indicator provides crucial insights into Kenya's performance
-                            in {indicator.category}. Understanding these metrics helps
-                            policymakers, researchers, and citizens track progress and
-                            identify areas for improvement.
-                        </p>
-                    </Accordion>
-
-                    <Accordion title="How is the score calculated?">
-                        <p>{indicator.methodology}</p>
-                    </Accordion>
-                </div>
-
-                {/* Source */}
-                <SourceDisclaimer
-                    source={indicator.source}
-                    sourceUrl={indicator.sourceUrl}
-                    year={indicator.year}
-                />
             </div>
         </div>
     );

@@ -1,15 +1,20 @@
 import { notFound } from 'next/navigation';
-import { getSDGGoalBySlug } from '@/data/mockData';
+import { getSDGGoalBySlug } from '@/lib/dataService';
 import { getSDGStatusColor } from '@/lib/utils';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
+import DataFreshness from '@/components/ui/DataFreshness';
 
-export default function SDGGoalPage({
-    params,
-}: {
-    params: { slug: string };
-}) {
-    const goal = getSDGGoalBySlug(params.slug);
+export const revalidate = 86400; // Revalidate daily
+
+interface PageProps {
+    params: {
+        slug: string;
+    };
+}
+
+export default async function SDGGoalPage({ params }: PageProps) {
+    const goal = await getSDGGoalBySlug(params.slug);
 
     if (!goal) {
         notFound();
@@ -43,11 +48,16 @@ export default function SDGGoalPage({
                             {goal.title}
                         </h1>
                         <p className="text-lg text-slate-light mb-4">{goal.description}</p>
-                        <span
-                            className={`rank-badge ${getSDGStatusColor(goal.status)} capitalize`}
-                        >
-                            Status: {goal.status.replace('-', ' ')}
-                        </span>
+                        <div className="flex items-center gap-4">
+                            <span
+                                className={`rank-badge ${getSDGStatusColor(goal.status)} capitalize`}
+                            >
+                                Status: {goal.status.replace('-', ' ')}
+                            </span>
+                            {goal.lastUpdated && (
+                                <DataFreshness lastUpdated={goal.lastUpdated} />
+                            )}
+                        </div>
                     </div>
                 </div>
 

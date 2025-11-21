@@ -1,10 +1,9 @@
-'use client';
-
 import { useState } from 'react';
 import { Info } from 'lucide-react';
+import { InfoContent } from '@/types';
 
 interface InfoTooltipProps {
-    content: string;
+    content: string | InfoContent;
     title?: string;
     position?: 'top' | 'bottom' | 'left' | 'right';
     className?: string;
@@ -32,6 +31,28 @@ export default function InfoTooltip({
         right: 'right-full top-1/2 -translate-y-1/2 border-t-transparent border-b-transparent border-l-transparent border-r-slate-dark',
     };
 
+    const renderContent = () => {
+        if (typeof content === 'string') {
+            return <div className="text-white/90">{content}</div>;
+        }
+
+        return (
+            <div className="space-y-2">
+                {content.brief && (
+                    <div className="text-white/90">{content.brief}</div>
+                )}
+                {content.whyItMatters && (
+                    <div>
+                        <div className="text-xs font-bold text-white/60 uppercase tracking-wider mb-0.5">Why it matters</div>
+                        <div className="text-white/90">{content.whyItMatters}</div>
+                    </div>
+                )}
+            </div>
+        );
+    };
+
+    const tooltipTitle = title || (typeof content !== 'string' ? content.title : undefined);
+
     return (
         <div className={`relative inline-block ${className}`}>
             <button
@@ -41,7 +62,7 @@ export default function InfoTooltip({
                 onMouseLeave={() => setIsVisible(false)}
                 onFocus={() => setIsVisible(true)}
                 onBlur={() => setIsVisible(false)}
-                aria-label={title || 'More information'}
+                aria-label={tooltipTitle || 'More information'}
                 aria-describedby="tooltip-content"
             >
                 <Info className="w-4 h-4" aria-hidden="true" />
@@ -51,13 +72,13 @@ export default function InfoTooltip({
                 <div
                     id="tooltip-content"
                     role="tooltip"
-                    className={`absolute z-50 ${positionClasses[position]} w-64 pointer-events-none`}
+                    className={`absolute z-50 ${positionClasses[position]} w-72 pointer-events-none`}
                 >
                     <div className="bg-slate-dark text-white text-sm rounded-lg shadow-lg p-3">
-                        {title && (
-                            <div className="font-semibold mb-1">{title}</div>
+                        {tooltipTitle && (
+                            <div className="font-semibold mb-2 border-b border-white/10 pb-1">{tooltipTitle}</div>
                         )}
-                        <div className="text-white/90">{content}</div>
+                        {renderContent()}
                     </div>
                     <div
                         className={`absolute w-0 h-0 border-4 ${arrowClasses[position]}`}

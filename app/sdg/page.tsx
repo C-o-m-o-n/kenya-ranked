@@ -1,8 +1,13 @@
 import Link from 'next/link';
-import { sdgGoals } from '@/data/mockData';
+import { getAllSDGGoals } from '@/lib/dataService';
 import { getSDGStatusColor } from '@/lib/utils';
+import DataFreshness from '@/components/ui/DataFreshness';
 
-export default function SDGPage() {
+export const revalidate = 86400; // Revalidate daily
+
+export default async function SDGPage() {
+    const goals = await getAllSDGGoals();
+
     return (
         <div className="min-h-screen bg-soft-white py-12">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -43,7 +48,7 @@ export default function SDGPage() {
 
                 {/* SDG Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {sdgGoals.map((goal) => (
+                    {goals.map((goal) => (
                         <Link
                             key={goal.number}
                             href={`/sdg/${goal.slug}`}
@@ -98,6 +103,9 @@ export default function SDGPage() {
                                 >
                                     {goal.status.replace('-', ' ')}
                                 </span>
+                                {goal.lastUpdated && (
+                                    <DataFreshness lastUpdated={goal.lastUpdated} showLabel={false} />
+                                )}
                                 <span className="text-sm text-slate-light">
                                     {goal.indicators.length} indicators
                                 </span>

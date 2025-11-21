@@ -86,3 +86,23 @@ export function getCacheStatus() {
 
     return status;
 }
+
+/**
+ * Get all SDG goals
+ */
+import { sdgGoals } from '@/data/sdgData';
+import type { SDGGoal } from '@/types';
+
+export async function getAllSDGGoals(): Promise<SDGGoal[]> {
+    // Simulate API delay
+    // await new Promise(resolve => setTimeout(resolve, 100));
+    return sdgGoals;
+}
+
+/**
+ * Get SDG goal by slug
+ */
+export async function getSDGGoalBySlug(slug: string): Promise<SDGGoal | undefined> {
+    const goals = await getAllSDGGoals();
+    return goals.find(goal => goal.slug === slug);
+}

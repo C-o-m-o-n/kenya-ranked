@@ -1,0 +1,751 @@
+
+> kenya-ranked@0.1.0 dev
+> next dev
+
+ ⚠ Port 3000 is in use, trying 3001 instead.
+  ▲ Next.js 14.2.33
+  - Local:        http://localhost:3001
+  - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 3.2s
+ ○ Compiling / ...
+ ✓ Compiled / in 7.3s (649 modules)
+ ✓ Compiled in 1432ms (298 modules)
+Failed to set fetch cache https://hdr.undp.org/sites/default/files/2025_HDR/HDR25_Composite_indices_complete_time_series.csv Error: Failed to set Next.js data cache, items over 2MB can not be cached (2669261 bytes)
+    at IncrementalCache.set (/home/comon/dev/comon/kenya-ranked/node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/incremental-cache/index.js:388:23)
+    at eval (webpack-internal:///(rsc)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/patch-fetch.js:456:74)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fetchUNDPHDIData (webpack-internal:///(rsc)/./lib/dataFetchers/undpData.ts:22:26)
+    at async getKenyaHDI (webpack-internal:///(rsc)/./lib/dataFetchers/undpData.ts:106:21)
+    at async Promise.all (index 3)
+    at async getAllKeyIndicators (webpack-internal:///(rsc)/./lib/dataFetchers/realData.ts:243:69)
+    at async getCachedData (webpack-internal:///(rsc)/./lib/dataService.ts:27:22)
+    at async HomePage (webpack-internal:///(rsc)/./app/page.tsx:88:27)
+Error fetching keyIndicators: TypeError: Cannot read properties of undefined (reading 'year')
+    at getKenyaHDI (webpack-internal:///(rsc)/./lib/dataFetchers/undpData.ts:109:29)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Promise.all (index 3)
+    at async getAllKeyIndicators (webpack-internal:///(rsc)/./lib/dataFetchers/realData.ts:243:69)
+    at async getCachedData (webpack-internal:///(rsc)/./lib/dataService.ts:27:22)
+    at async HomePage (webpack-internal:///(rsc)/./app/page.tsx:88:27)
+ ⨯ lib/dataFetchers/undpData.ts (87:29) @ year
+ ⨯ TypeError: Cannot read properties of undefined (reading 'year')
+    at getKenyaHDI (./lib/dataFetchers/undpData.ts:109:29)
+    at async Promise.all (index 3)
+    at async getAllKeyIndicators (./lib/dataFetchers/realData.ts:243:69)
+    at async getCachedData (./lib/dataService.ts:27:22)
+    at async HomePage (./app/page.tsx:88:27)
+digest: "3189575653"
+[0m [90m 85 |[39m[0m
+[0m [90m 86 |[39m     [36mreturn[39m {[0m
+[0m[31m[1m>[22m[39m[90m 87 |[39m         id[33m:[39m [32m'hdi-'[39m [33m+[39m latest[33m.[39myear[33m,[39m[0m
+[0m [90m    |[39m                             [31m[1m^[22m[39m[0m
+[0m [90m 88 |[39m         name[33m:[39m [32m'Human Development Index'[39m[33m,[39m[0m
+[0m [90m 89 |[39m         slug[33m:[39m [32m'human-development-index'[39m[33m,[39m[0m
+[0m [90m 90 |[39m         category[33m:[39m [32m'development'[39m [36mas[39m [36mconst[39m[33m,[39m[0m
+ ⨯ lib/dataFetchers/undpData.ts (87:29) @ year
+ ⨯ TypeError: Cannot read properties of undefined (reading 'year')
+    at getKenyaHDI (./lib/dataFetchers/undpData.ts:109:29)
+    at async Promise.all (index 3)
+    at async getAllKeyIndicators (./lib/dataFetchers/realData.ts:243:69)
+    at async getCachedData (./lib/dataService.ts:27:22)
+    at async HomePage (./app/page.tsx:88:27)
+digest: "3189575653"
+[0m [90m 85 |[39m[0m
+[0m [90m 86 |[39m     [36mreturn[39m {[0m
+[0m[31m[1m>[22m[39m[90m 87 |[39m         id[33m:[39m [32m'hdi-'[39m [33m+[39m latest[33m.[39myear[33m,[39m[0m
+[0m [90m    |[39m                             [31m[1m^[22m[39m[0m
+[0m [90m 88 |[39m         name[33m:[39m [32m'Human Development Index'[39m[33m,[39m[0m
+[0m [90m 89 |[39m         slug[33m:[39m [32m'human-development-index'[39m[33m,[39m[0m
+[0m [90m 90 |[39m         category[33m:[39m [32m'development'[39m [36mas[39m [36mconst[39m[33m,[39m[0m
+ GET / 500 in 12116ms
+ ○ Compiling /icon.png ...
+ ✓ Compiled /icon.png in 8.4s (356 modules)
+ GET /icon.png?d1c3038d99b50dff 200 in 9207ms
+ ✓ Compiled in 772ms (324 modules)
+Failed to set fetch cache https://hdr.undp.org/sites/default/files/2025_HDR/HDR25_Composite_indices_complete_time_series.csv Error: Failed to set Next.js data cache, items over 2MB can not be cached (2669272 bytes)
+    at IncrementalCache.set (/home/comon/dev/comon/kenya-ranked/node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/incremental-cache/index.js:388:23)
+    at eval (webpack-internal:///(rsc)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/patch-fetch.js:456:74)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fetchUNDPHDIData (webpack-internal:///(rsc)/./lib/dataFetchers/undpData.ts:22:26)
+    at async getKenyaHDI (webpack-internal:///(rsc)/./lib/dataFetchers/undpData.ts:109:21)
+    at async Promise.all (index 3)
+    at async getAllKeyIndicators (webpack-internal:///(rsc)/./lib/dataFetchers/realData.ts:243:69)
+    at async getCachedData (webpack-internal:///(rsc)/./lib/dataService.ts:27:22)
+    at async HomePage (webpack-internal:///(rsc)/./app/page.tsx:88:27)
+Error fetching UNDP HDI data: Error: No data found for Kenya
+    at fetchUNDPHDIData (webpack-internal:///(rsc)/./lib/dataFetchers/undpData.ts:54:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getKenyaHDI (webpack-internal:///(rsc)/./lib/dataFetchers/undpData.ts:109:21)
+    at async Promise.all (index 3)
+    at async getAllKeyIndicators (webpack-internal:///(rsc)/./lib/dataFetchers/realData.ts:243:69)
+    at async getCachedData (webpack-internal:///(rsc)/./lib/dataService.ts:27:22)
+    at async HomePage (webpack-internal:///(rsc)/./app/page.tsx:88:27)
+Warning: React expects the `children` prop of <title> tags to be a string, number, or object with a novel `toString` method but found an Array with length 3 instead. Browsers treat all child Nodes of <title> tags as Text content and React expects to be able to convert `children` of <title> tags to a single string value which is why Arrays of length greater than 1 are not supported. When using JSX it can be commong to combine text nodes and value nodes. For example: <title>hello {nameOfUser}</title>. While not immediately apparent, `children` in this case is an Array with length 2. If your `children` prop is using this form try rewriting it using a template string: <title>{`hello ${nameOfUser}`}</title>.
+    at title
+    at rect
+    at g
+    at g
+    at svg
+    at div
+    at div
+    at div
+    at div
+    at div
+    at section
+    at div
+    at InnerLayoutRouter (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:242:11)
+    at RedirectErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:73:9)
+    at RedirectBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:81:11)
+    at NotFoundErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:76:9)
+    at NotFoundBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:84:11)
+    at LoadingBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:347:11)
+    at ErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:158:11)
+    at InnerScrollAndFocusHandler (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:153:9)
+    at ScrollAndFocusHandler (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:228:11)
+    at RenderFromTemplateContext (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/render-from-template-context.js:16:44)
+    at Lazy
+    at OuterLayoutRouter (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:367:11)
+    at Lazy
+    at main
+    at body
+    at html
+    at RedirectErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:73:9)
+    at RedirectBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:81:11)
+    at ReactDevOverlay (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/react-dev-overlay/app/ReactDevOverlay.js:87:9)
+    at HotReload (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:322:11)
+    at Router (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/app-router.js:202:11)
+    at ErrorBoundaryHandler (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:112:9)
+    at ErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:158:11)
+    at AppRouter (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/app-router.js:564:13)
+    at Lazy
+    at r6 (/home/comon/dev/comon/kenya-ranked/node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:39:19179)
+    at r6 (/home/comon/dev/comon/kenya-ranked/node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:39:19179)
+    at ServerInsertedHTMLProvider (/home/comon/dev/comon/kenya-ranked/node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:39:24963)
+Warning: React expects the `children` prop of <title> tags to be a string, number, or object with a novel `toString` method but found an Array with length 3 instead. Browsers treat all child Nodes of <title> tags as Text content and React expects to be able to convert `children` of <title> tags to a single string value which is why Arrays of length greater than 1 are not supported. When using JSX it can be commong to combine text nodes and value nodes. For example: <title>hello {nameOfUser}</title>. While not immediately apparent, `children` in this case is an Array with length 2. If your `children` prop is using this form try rewriting it using a template string: <title>{`hello ${nameOfUser}`}</title>.
+    at title
+    at rect
+    at g
+    at g
+    at svg
+    at div
+    at div
+    at div
+    at div
+    at div
+    at section
+    at div
+    at InnerLayoutRouter (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:242:11)
+    at RedirectErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:73:9)
+    at RedirectBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:81:11)
+    at NotFoundErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:76:9)
+    at NotFoundBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:84:11)
+    at LoadingBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:347:11)
+    at ErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:158:11)
+    at InnerScrollAndFocusHandler (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:153:9)
+    at ScrollAndFocusHandler (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:228:11)
+    at RenderFromTemplateContext (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/render-from-template-context.js:16:44)
+    at Lazy
+    at OuterLayoutRouter (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:367:11)
+    at Lazy
+    at main
+    at body
+    at html
+    at RedirectErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:73:9)
+    at RedirectBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:81:11)
+    at ReactDevOverlay (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/react-dev-overlay/app/ReactDevOverlay.js:87:9)
+    at HotReload (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:322:11)
+    at Router (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/app-router.js:202:11)
+    at ErrorBoundaryHandler (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:112:9)
+    at ErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:158:11)
+    at AppRouter (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/app-router.js:564:13)
+    at Lazy
+    at r6 (/home/comon/dev/comon/kenya-ranked/node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:39:19179)
+    at r6 (/home/comon/dev/comon/kenya-ranked/node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:39:19179)
+    at ServerInsertedHTMLProvider (/home/comon/dev/comon/kenya-ranked/node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:39:24963)
+Warning: React expects the `children` prop of <title> tags to be a string, number, or object with a novel `toString` method but found an Array with length 3 instead. Browsers treat all child Nodes of <title> tags as Text content and React expects to be able to convert `children` of <title> tags to a single string value which is why Arrays of length greater than 1 are not supported. When using JSX it can be commong to combine text nodes and value nodes. For example: <title>hello {nameOfUser}</title>. While not immediately apparent, `children` in this case is an Array with length 2. If your `children` prop is using this form try rewriting it using a template string: <title>{`hello ${nameOfUser}`}</title>.
+    at title
+    at rect
+    at g
+    at g
+    at svg
+    at div
+    at div
+    at div
+    at div
+    at div
+    at section
+    at div
+    at InnerLayoutRouter (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:242:11)
+    at RedirectErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:73:9)
+    at RedirectBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:81:11)
+    at NotFoundErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:76:9)
+    at NotFoundBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:84:11)
+    at LoadingBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:347:11)
+    at ErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:158:11)
+    at InnerScrollAndFocusHandler (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:153:9)
+    at ScrollAndFocusHandler (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:228:11)
+    at RenderFromTemplateContext (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/render-from-template-context.js:16:44)
+    at Lazy
+    at OuterLayoutRouter (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:367:11)
+    at Lazy
+    at main
+    at body
+    at html
+    at RedirectErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:73:9)
+    at RedirectBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:81:11)
+    at ReactDevOverlay (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/react-dev-overlay/app/ReactDevOverlay.js:87:9)
+    at HotReload (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:322:11)
+    at Router (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/app-router.js:202:11)
+    at ErrorBoundaryHandler (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:112:9)
+    at ErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:158:11)
+    at AppRouter (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/app-router.js:564:13)
+    at Lazy
+    at r6 (/home/comon/dev/comon/kenya-ranked/node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:39:19179)
+    at r6 (/home/comon/dev/comon/kenya-ranked/node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:39:19179)
+    at ServerInsertedHTMLProvider (/home/comon/dev/comon/kenya-ranked/node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:39:24963)
+Warning: React expects the `children` prop of <title> tags to be a string, number, or object with a novel `toString` method but found an Array with length 3 instead. Browsers treat all child Nodes of <title> tags as Text content and React expects to be able to convert `children` of <title> tags to a single string value which is why Arrays of length greater than 1 are not supported. When using JSX it can be commong to combine text nodes and value nodes. For example: <title>hello {nameOfUser}</title>. While not immediately apparent, `children` in this case is an Array with length 2. If your `children` prop is using this form try rewriting it using a template string: <title>{`hello ${nameOfUser}`}</title>.
+    at title
+    at rect
+    at g
+    at g
+    at svg
+    at div
+    at div
+    at div
+    at div
+    at div
+    at section
+    at div
+    at InnerLayoutRouter (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:242:11)
+    at RedirectErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:73:9)
+    at RedirectBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:81:11)
+    at NotFoundErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:76:9)
+    at NotFoundBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:84:11)
+    at LoadingBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:347:11)
+    at ErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:158:11)
+    at InnerScrollAndFocusHandler (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:153:9)
+    at ScrollAndFocusHandler (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:228:11)
+    at RenderFromTemplateContext (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/render-from-template-context.js:16:44)
+    at Lazy
+    at OuterLayoutRouter (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:367:11)
+    at Lazy
+    at main
+    at body
+    at html
+    at RedirectErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:73:9)
+    at RedirectBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:81:11)
+    at ReactDevOverlay (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/react-dev-overlay/app/ReactDevOverlay.js:87:9)
+    at HotReload (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:322:11)
+    at Router (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/app-router.js:202:11)
+    at ErrorBoundaryHandler (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:112:9)
+    at ErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:158:11)
+    at AppRouter (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/app-router.js:564:13)
+    at Lazy
+    at r6 (/home/comon/dev/comon/kenya-ranked/node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:39:19179)
+    at r6 (/home/comon/dev/comon/kenya-ranked/node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:39:19179)
+    at ServerInsertedHTMLProvider (/home/comon/dev/comon/kenya-ranked/node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:39:24963)
+Warning: React expects the `children` prop of <title> tags to be a string, number, or object with a novel `toString` method but found an Array with length 3 instead. Browsers treat all child Nodes of <title> tags as Text content and React expects to be able to convert `children` of <title> tags to a single string value which is why Arrays of length greater than 1 are not supported. When using JSX it can be commong to combine text nodes and value nodes. For example: <title>hello {nameOfUser}</title>. While not immediately apparent, `children` in this case is an Array with length 2. If your `children` prop is using this form try rewriting it using a template string: <title>{`hello ${nameOfUser}`}</title>.
+    at title
+    at rect
+    at g
+    at g
+    at svg
+    at div
+    at div
+    at div
+    at div
+    at div
+    at section
+    at div
+    at InnerLayoutRouter (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:242:11)
+    at RedirectErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:73:9)
+    at RedirectBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:81:11)
+    at NotFoundErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:76:9)
+    at NotFoundBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:84:11)
+    at LoadingBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:347:11)
+    at ErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:158:11)
+    at InnerScrollAndFocusHandler (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:153:9)
+    at ScrollAndFocusHandler (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:228:11)
+    at RenderFromTemplateContext (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/render-from-template-context.js:16:44)
+    at Lazy
+    at OuterLayoutRouter (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:367:11)
+    at Lazy
+    at main
+    at body
+    at html
+    at RedirectErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:73:9)
+    at RedirectBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:81:11)
+    at ReactDevOverlay (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/react-dev-overlay/app/ReactDevOverlay.js:87:9)
+    at HotReload (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:322:11)
+    at Router (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/app-router.js:202:11)
+    at ErrorBoundaryHandler (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:112:9)
+    at ErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:158:11)
+    at AppRouter (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/app-router.js:564:13)
+    at Lazy
+    at r6 (/home/comon/dev/comon/kenya-ranked/node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:39:19179)
+    at r6 (/home/comon/dev/comon/kenya-ranked/node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:39:19179)
+    at ServerInsertedHTMLProvider (/home/comon/dev/comon/kenya-ranked/node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:39:24963)
+Warning: React expects the `children` prop of <title> tags to be a string, number, or object with a novel `toString` method but found an Array with length 3 instead. Browsers treat all child Nodes of <title> tags as Text content and React expects to be able to convert `children` of <title> tags to a single string value which is why Arrays of length greater than 1 are not supported. When using JSX it can be commong to combine text nodes and value nodes. For example: <title>hello {nameOfUser}</title>. While not immediately apparent, `children` in this case is an Array with length 2. If your `children` prop is using this form try rewriting it using a template string: <title>{`hello ${nameOfUser}`}</title>.
+    at title
+    at rect
+    at g
+    at g
+    at svg
+    at div
+    at div
+    at div
+    at div
+    at div
+    at section
+    at div
+    at InnerLayoutRouter (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:242:11)
+    at RedirectErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:73:9)
+    at RedirectBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:81:11)
+    at NotFoundErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:76:9)
+    at NotFoundBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:84:11)
+    at LoadingBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:347:11)
+    at ErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:158:11)
+    at InnerScrollAndFocusHandler (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:153:9)
+    at ScrollAndFocusHandler (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:228:11)
+    at RenderFromTemplateContext (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/render-from-template-context.js:16:44)
+    at Lazy
+    at OuterLayoutRouter (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:367:11)
+    at Lazy
+    at main
+    at body
+    at html
+    at RedirectErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:73:9)
+    at RedirectBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:81:11)
+    at ReactDevOverlay (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/react-dev-overlay/app/ReactDevOverlay.js:87:9)
+    at HotReload (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:322:11)
+    at Router (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/app-router.js:202:11)
+    at ErrorBoundaryHandler (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:112:9)
+    at ErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:158:11)
+    at AppRouter (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/app-router.js:564:13)
+    at Lazy
+    at r6 (/home/comon/dev/comon/kenya-ranked/node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:39:19179)
+    at r6 (/home/comon/dev/comon/kenya-ranked/node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:39:19179)
+    at ServerInsertedHTMLProvider (/home/comon/dev/comon/kenya-ranked/node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:39:24963)
+Warning: React expects the `children` prop of <title> tags to be a string, number, or object with a novel `toString` method but found an Array with length 3 instead. Browsers treat all child Nodes of <title> tags as Text content and React expects to be able to convert `children` of <title> tags to a single string value which is why Arrays of length greater than 1 are not supported. When using JSX it can be commong to combine text nodes and value nodes. For example: <title>hello {nameOfUser}</title>. While not immediately apparent, `children` in this case is an Array with length 2. If your `children` prop is using this form try rewriting it using a template string: <title>{`hello ${nameOfUser}`}</title>.
+    at title
+    at rect
+    at g
+    at g
+    at svg
+    at div
+    at div
+    at div
+    at div
+    at div
+    at section
+    at div
+    at InnerLayoutRouter (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:242:11)
+    at RedirectErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:73:9)
+    at RedirectBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:81:11)
+    at NotFoundErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:76:9)
+    at NotFoundBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:84:11)
+    at LoadingBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:347:11)
+    at ErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:158:11)
+    at InnerScrollAndFocusHandler (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:153:9)
+    at ScrollAndFocusHandler (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:228:11)
+    at RenderFromTemplateContext (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/render-from-template-context.js:16:44)
+    at Lazy
+    at OuterLayoutRouter (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:367:11)
+    at Lazy
+    at main
+    at body
+    at html
+    at RedirectErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:73:9)
+    at RedirectBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:81:11)
+    at ReactDevOverlay (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/react-dev-overlay/app/ReactDevOverlay.js:87:9)
+    at HotReload (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:322:11)
+    at Router (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/app-router.js:202:11)
+    at ErrorBoundaryHandler (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:112:9)
+    at ErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:158:11)
+    at AppRouter (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/app-router.js:564:13)
+    at Lazy
+    at r6 (/home/comon/dev/comon/kenya-ranked/node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:39:19179)
+    at r6 (/home/comon/dev/comon/kenya-ranked/node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:39:19179)
+    at ServerInsertedHTMLProvider (/home/comon/dev/comon/kenya-ranked/node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:39:24963)
+ GET / 200 in 4227ms
+ ✓ Compiled /icon.png in 365ms (356 modules)
+ GET /icon.png?d1c3038d99b50dff 200 in 605ms
+ GET /icon.png?d1c3038d99b50dff 200 in 37ms
+Failed to set fetch cache https://hdr.undp.org/sites/default/files/2025_HDR/HDR25_Composite_indices_complete_time_series.csv Error: Failed to set Next.js data cache, items over 2MB can not be cached (2669272 bytes)
+    at IncrementalCache.set (/home/comon/dev/comon/kenya-ranked/node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/incremental-cache/index.js:388:23)
+    at eval (webpack-internal:///(rsc)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/patch-fetch.js:456:74)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fetchUNDPHDIData (webpack-internal:///(rsc)/./lib/dataFetchers/undpData.ts:22:26)
+    at async getKenyaHDI (webpack-internal:///(rsc)/./lib/dataFetchers/undpData.ts:109:21)
+    at async Promise.all (index 3)
+    at async getAllKeyIndicators (webpack-internal:///(rsc)/./lib/dataFetchers/realData.ts:243:69)
+    at async getCachedData (webpack-internal:///(rsc)/./lib/dataService.ts:27:22)
+    at async HomePage (webpack-internal:///(rsc)/./app/page.tsx:88:27)
+Error fetching UNDP HDI data: Error: No data found for Kenya
+    at fetchUNDPHDIData (webpack-internal:///(rsc)/./lib/dataFetchers/undpData.ts:54:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getKenyaHDI (webpack-internal:///(rsc)/./lib/dataFetchers/undpData.ts:109:21)
+    at async Promise.all (index 3)
+    at async getAllKeyIndicators (webpack-internal:///(rsc)/./lib/dataFetchers/realData.ts:243:69)
+    at async getCachedData (webpack-internal:///(rsc)/./lib/dataService.ts:27:22)
+    at async HomePage (webpack-internal:///(rsc)/./app/page.tsx:88:27)
+Warning: React expects the `children` prop of <title> tags to be a string, number, or object with a novel `toString` method but found an Array with length 3 instead. Browsers treat all child Nodes of <title> tags as Text content and React expects to be able to convert `children` of <title> tags to a single string value which is why Arrays of length greater than 1 are not supported. When using JSX it can be commong to combine text nodes and value nodes. For example: <title>hello {nameOfUser}</title>. While not immediately apparent, `children` in this case is an Array with length 2. If your `children` prop is using this form try rewriting it using a template string: <title>{`hello ${nameOfUser}`}</title>.
+    at title
+    at rect
+    at g
+    at g
+    at svg
+    at div
+    at div
+    at div
+    at div
+    at div
+    at section
+    at div
+    at InnerLayoutRouter (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:242:11)
+    at RedirectErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:73:9)
+    at RedirectBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:81:11)
+    at NotFoundErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:76:9)
+    at NotFoundBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:84:11)
+    at LoadingBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:347:11)
+    at ErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:158:11)
+    at InnerScrollAndFocusHandler (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:153:9)
+    at ScrollAndFocusHandler (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:228:11)
+    at RenderFromTemplateContext (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/render-from-template-context.js:16:44)
+    at Lazy
+    at OuterLayoutRouter (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:367:11)
+    at Lazy
+    at main
+    at body
+    at html
+    at RedirectErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:73:9)
+    at RedirectBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:81:11)
+    at ReactDevOverlay (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/react-dev-overlay/app/ReactDevOverlay.js:87:9)
+    at HotReload (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:322:11)
+    at Router (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/app-router.js:202:11)
+    at ErrorBoundaryHandler (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:112:9)
+    at ErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:158:11)
+    at AppRouter (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/app-router.js:564:13)
+    at Lazy
+    at r6 (/home/comon/dev/comon/kenya-ranked/node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:39:19179)
+    at r6 (/home/comon/dev/comon/kenya-ranked/node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:39:19179)
+    at ServerInsertedHTMLProvider (/home/comon/dev/comon/kenya-ranked/node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:39:24963)
+Warning: React expects the `children` prop of <title> tags to be a string, number, or object with a novel `toString` method but found an Array with length 3 instead. Browsers treat all child Nodes of <title> tags as Text content and React expects to be able to convert `children` of <title> tags to a single string value which is why Arrays of length greater than 1 are not supported. When using JSX it can be commong to combine text nodes and value nodes. For example: <title>hello {nameOfUser}</title>. While not immediately apparent, `children` in this case is an Array with length 2. If your `children` prop is using this form try rewriting it using a template string: <title>{`hello ${nameOfUser}`}</title>.
+    at title
+    at rect
+    at g
+    at g
+    at svg
+    at div
+    at div
+    at div
+    at div
+    at div
+    at section
+    at div
+    at InnerLayoutRouter (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:242:11)
+    at RedirectErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:73:9)
+    at RedirectBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:81:11)
+    at NotFoundErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:76:9)
+    at NotFoundBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:84:11)
+    at LoadingBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:347:11)
+    at ErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:158:11)
+    at InnerScrollAndFocusHandler (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:153:9)
+    at ScrollAndFocusHandler (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:228:11)
+    at RenderFromTemplateContext (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/render-from-template-context.js:16:44)
+    at Lazy
+    at OuterLayoutRouter (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:367:11)
+    at Lazy
+    at main
+    at body
+    at html
+    at RedirectErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:73:9)
+    at RedirectBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:81:11)
+    at ReactDevOverlay (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/react-dev-overlay/app/ReactDevOverlay.js:87:9)
+    at HotReload (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:322:11)
+    at Router (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/app-router.js:202:11)
+    at ErrorBoundaryHandler (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:112:9)
+    at ErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:158:11)
+    at AppRouter (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/app-router.js:564:13)
+    at Lazy
+    at r6 (/home/comon/dev/comon/kenya-ranked/node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:39:19179)
+    at r6 (/home/comon/dev/comon/kenya-ranked/node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:39:19179)
+    at ServerInsertedHTMLProvider (/home/comon/dev/comon/kenya-ranked/node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:39:24963)
+Warning: React expects the `children` prop of <title> tags to be a string, number, or object with a novel `toString` method but found an Array with length 3 instead. Browsers treat all child Nodes of <title> tags as Text content and React expects to be able to convert `children` of <title> tags to a single string value which is why Arrays of length greater than 1 are not supported. When using JSX it can be commong to combine text nodes and value nodes. For example: <title>hello {nameOfUser}</title>. While not immediately apparent, `children` in this case is an Array with length 2. If your `children` prop is using this form try rewriting it using a template string: <title>{`hello ${nameOfUser}`}</title>.
+    at title
+    at rect
+    at g
+    at g
+    at svg
+    at div
+    at div
+    at div
+    at div
+    at div
+    at section
+    at div
+    at InnerLayoutRouter (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:242:11)
+    at RedirectErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:73:9)
+    at RedirectBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:81:11)
+    at NotFoundErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:76:9)
+    at NotFoundBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:84:11)
+    at LoadingBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:347:11)
+    at ErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:158:11)
+    at InnerScrollAndFocusHandler (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:153:9)
+    at ScrollAndFocusHandler (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:228:11)
+    at RenderFromTemplateContext (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/render-from-template-context.js:16:44)
+    at Lazy
+    at OuterLayoutRouter (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:367:11)
+    at Lazy
+    at main
+    at body
+    at html
+    at RedirectErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:73:9)
+    at RedirectBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:81:11)
+    at ReactDevOverlay (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/react-dev-overlay/app/ReactDevOverlay.js:87:9)
+    at HotReload (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:322:11)
+    at Router (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/app-router.js:202:11)
+    at ErrorBoundaryHandler (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:112:9)
+    at ErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:158:11)
+    at AppRouter (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/app-router.js:564:13)
+    at Lazy
+    at r6 (/home/comon/dev/comon/kenya-ranked/node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:39:19179)
+    at r6 (/home/comon/dev/comon/kenya-ranked/node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:39:19179)
+    at ServerInsertedHTMLProvider (/home/comon/dev/comon/kenya-ranked/node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:39:24963)
+Warning: React expects the `children` prop of <title> tags to be a string, number, or object with a novel `toString` method but found an Array with length 3 instead. Browsers treat all child Nodes of <title> tags as Text content and React expects to be able to convert `children` of <title> tags to a single string value which is why Arrays of length greater than 1 are not supported. When using JSX it can be commong to combine text nodes and value nodes. For example: <title>hello {nameOfUser}</title>. While not immediately apparent, `children` in this case is an Array with length 2. If your `children` prop is using this form try rewriting it using a template string: <title>{`hello ${nameOfUser}`}</title>.
+    at title
+    at rect
+    at g
+    at g
+    at svg
+    at div
+    at div
+    at div
+    at div
+    at div
+    at section
+    at div
+    at InnerLayoutRouter (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:242:11)
+    at RedirectErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:73:9)
+    at RedirectBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:81:11)
+    at NotFoundErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:76:9)
+    at NotFoundBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:84:11)
+    at LoadingBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:347:11)
+    at ErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:158:11)
+    at InnerScrollAndFocusHandler (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:153:9)
+    at ScrollAndFocusHandler (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:228:11)
+    at RenderFromTemplateContext (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/render-from-template-context.js:16:44)
+    at Lazy
+    at OuterLayoutRouter (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:367:11)
+    at Lazy
+    at main
+    at body
+    at html
+    at RedirectErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:73:9)
+    at RedirectBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:81:11)
+    at ReactDevOverlay (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/react-dev-overlay/app/ReactDevOverlay.js:87:9)
+    at HotReload (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:322:11)
+    at Router (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/app-router.js:202:11)
+    at ErrorBoundaryHandler (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:112:9)
+    at ErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:158:11)
+    at AppRouter (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/app-router.js:564:13)
+    at Lazy
+    at r6 (/home/comon/dev/comon/kenya-ranked/node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:39:19179)
+    at r6 (/home/comon/dev/comon/kenya-ranked/node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:39:19179)
+    at ServerInsertedHTMLProvider (/home/comon/dev/comon/kenya-ranked/node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:39:24963)
+Warning: React expects the `children` prop of <title> tags to be a string, number, or object with a novel `toString` method but found an Array with length 3 instead. Browsers treat all child Nodes of <title> tags as Text content and React expects to be able to convert `children` of <title> tags to a single string value which is why Arrays of length greater than 1 are not supported. When using JSX it can be commong to combine text nodes and value nodes. For example: <title>hello {nameOfUser}</title>. While not immediately apparent, `children` in this case is an Array with length 2. If your `children` prop is using this form try rewriting it using a template string: <title>{`hello ${nameOfUser}`}</title>.
+    at title
+    at rect
+    at g
+    at g
+    at svg
+    at div
+    at div
+    at div
+    at div
+    at div
+    at section
+    at div
+    at InnerLayoutRouter (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:242:11)
+    at RedirectErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:73:9)
+    at RedirectBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:81:11)
+    at NotFoundErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:76:9)
+    at NotFoundBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:84:11)
+    at LoadingBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:347:11)
+    at ErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:158:11)
+    at InnerScrollAndFocusHandler (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:153:9)
+    at ScrollAndFocusHandler (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:228:11)
+    at RenderFromTemplateContext (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/render-from-template-context.js:16:44)
+    at Lazy
+    at OuterLayoutRouter (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:367:11)
+    at Lazy
+    at main
+    at body
+    at html
+    at RedirectErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:73:9)
+    at RedirectBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:81:11)
+    at ReactDevOverlay (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/react-dev-overlay/app/ReactDevOverlay.js:87:9)
+    at HotReload (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:322:11)
+    at Router (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/app-router.js:202:11)
+    at ErrorBoundaryHandler (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:112:9)
+    at ErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:158:11)
+    at AppRouter (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/app-router.js:564:13)
+    at Lazy
+    at r6 (/home/comon/dev/comon/kenya-ranked/node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:39:19179)
+    at r6 (/home/comon/dev/comon/kenya-ranked/node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:39:19179)
+    at ServerInsertedHTMLProvider (/home/comon/dev/comon/kenya-ranked/node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:39:24963)
+Warning: React expects the `children` prop of <title> tags to be a string, number, or object with a novel `toString` method but found an Array with length 3 instead. Browsers treat all child Nodes of <title> tags as Text content and React expects to be able to convert `children` of <title> tags to a single string value which is why Arrays of length greater than 1 are not supported. When using JSX it can be commong to combine text nodes and value nodes. For example: <title>hello {nameOfUser}</title>. While not immediately apparent, `children` in this case is an Array with length 2. If your `children` prop is using this form try rewriting it using a template string: <title>{`hello ${nameOfUser}`}</title>.
+    at title
+    at rect
+    at g
+    at g
+    at svg
+    at div
+    at div
+    at div
+    at div
+    at div
+    at section
+    at div
+    at InnerLayoutRouter (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:242:11)
+    at RedirectErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:73:9)
+    at RedirectBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:81:11)
+    at NotFoundErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:76:9)
+    at NotFoundBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:84:11)
+    at LoadingBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:347:11)
+    at ErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:158:11)
+    at InnerScrollAndFocusHandler (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:153:9)
+    at ScrollAndFocusHandler (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:228:11)
+    at RenderFromTemplateContext (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/render-from-template-context.js:16:44)
+    at Lazy
+    at OuterLayoutRouter (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:367:11)
+    at Lazy
+    at main
+    at body
+    at html
+    at RedirectErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:73:9)
+    at RedirectBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:81:11)
+    at ReactDevOverlay (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/react-dev-overlay/app/ReactDevOverlay.js:87:9)
+    at HotReload (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:322:11)
+    at Router (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/app-router.js:202:11)
+    at ErrorBoundaryHandler (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:112:9)
+    at ErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:158:11)
+    at AppRouter (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/app-router.js:564:13)
+    at Lazy
+    at r6 (/home/comon/dev/comon/kenya-ranked/node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:39:19179)
+    at r6 (/home/comon/dev/comon/kenya-ranked/node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:39:19179)
+    at ServerInsertedHTMLProvider (/home/comon/dev/comon/kenya-ranked/node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:39:24963)
+Warning: React expects the `children` prop of <title> tags to be a string, number, or object with a novel `toString` method but found an Array with length 3 instead. Browsers treat all child Nodes of <title> tags as Text content and React expects to be able to convert `children` of <title> tags to a single string value which is why Arrays of length greater than 1 are not supported. When using JSX it can be commong to combine text nodes and value nodes. For example: <title>hello {nameOfUser}</title>. While not immediately apparent, `children` in this case is an Array with length 2. If your `children` prop is using this form try rewriting it using a template string: <title>{`hello ${nameOfUser}`}</title>.
+    at title
+    at rect
+    at g
+    at g
+    at svg
+    at div
+    at div
+    at div
+    at div
+    at div
+    at section
+    at div
+    at InnerLayoutRouter (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:242:11)
+    at RedirectErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:73:9)
+    at RedirectBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:81:11)
+    at NotFoundErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:76:9)
+    at NotFoundBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:84:11)
+    at LoadingBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:347:11)
+    at ErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:158:11)
+    at InnerScrollAndFocusHandler (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:153:9)
+    at ScrollAndFocusHandler (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:228:11)
+    at RenderFromTemplateContext (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/render-from-template-context.js:16:44)
+    at Lazy
+    at OuterLayoutRouter (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:367:11)
+    at Lazy
+    at main
+    at body
+    at html
+    at RedirectErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:73:9)
+    at RedirectBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:81:11)
+    at ReactDevOverlay (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/react-dev-overlay/app/ReactDevOverlay.js:87:9)
+    at HotReload (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:322:11)
+    at Router (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/app-router.js:202:11)
+    at ErrorBoundaryHandler (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:112:9)
+    at ErrorBoundary (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:158:11)
+    at AppRouter (webpack-internal:///(ssr)/./node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/app-router.js:564:13)
+    at Lazy
+    at r6 (/home/comon/dev/comon/kenya-ranked/node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:39:19179)
+    at r6 (/home/comon/dev/comon/kenya-ranked/node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:39:19179)
+    at ServerInsertedHTMLProvider (/home/comon/dev/comon/kenya-ranked/node_modules/.pnpm/next@14.2.33_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:39:24963)
+ GET / 200 in 3295ms
+ GET /icon.png?d1c3038d99b50dff 200 in 36ms
+ GET /icon.png?d1c3038d99b50dff 200 in 68ms
+ ○ Compiling /indicators ...
+ ⨯ ./app/indicators/page.tsx
+Error: 
+  [31mx[0m The "use client" directive must be placed before other expressions. Move it to the top of the file to resolve this issue.
+    ,-[[36;1;4m/home/comon/dev/comon/kenya-ranked/app/indicators/page.tsx[0m:49:1]
+ [2m49[0m | }
+ [2m50[0m | 
+ [2m51[0m | // Client component for search/filter functionality
+ [2m52[0m | 'use client';
+    : [31;1m^^^^^^^^^^^^^[0m
+ [2m53[0m | import { useState } from 'react';
+ [2m54[0m | import { Indicator } from '@/types';
+    `----
+
+Import trace for requested module:
+./app/indicators/page.tsx
+ ⨯ ./app/indicators/page.tsx
+Error: 
+  [31mx[0m The "use client" directive must be placed before other expressions. Move it to the top of the file to resolve this issue.
+    ,-[[36;1;4m/home/comon/dev/comon/kenya-ranked/app/indicators/page.tsx[0m:49:1]
+ [2m49[0m | }
+ [2m50[0m | 
+ [2m51[0m | // Client component for search/filter functionality
+ [2m52[0m | 'use client';
+    : [31;1m^^^^^^^^^^^^^[0m
+ [2m53[0m | import { useState } from 'react';
+ [2m54[0m | import { Indicator } from '@/types';
+    `----
+
+Import trace for requested module:
+./app/indicators/page.tsx
+ ⨯ ./app/indicators/page.tsx
+Error: 
+  [31mx[0m The "use client" directive must be placed before other expressions. Move it to the top of the file to resolve this issue.
+    ,-[[36;1;4m/home/comon/dev/comon/kenya-ranked/app/indicators/page.tsx[0m:49:1]
+ [2m49[0m | }
+ [2m50[0m | 
+ [2m51[0m | // Client component for search/filter functionality
+ [2m52[0m | 'use client';
+    : [31;1m^^^^^^^^^^^^^[0m
+ [2m53[0m | import { useState } from 'react';
+ [2m54[0m | import { Indicator } from '@/types';
+    `----
+
+Import trace for requested module:
+./app/indicators/page.tsx
+ ⨯ ./app/indicators/page.tsx
+Error: 
+  [31mx[0m The "use client" directive must be placed before other expressions. Move it to the top of the file to resolve this issue.
+    ,-[[36;1;4m/home/comon/dev/comon/kenya-ranked/app/indicators/page.tsx[0m:49:1]
+ [2m49[0m | }
+ [2m50[0m | 
+ [2m51[0m | // Client component for search/filter functionality
+ [2m52[0m | 'use client';
+    : [31;1m^^^^^^^^^^^^^[0m
+ [2m53[0m | import { useState } from 'react';
+ [2m54[0m | import { Indicator } from '@/types';
+    `----
+
+Import trace for requested module:
+./app/indicators/page.tsx
+ GET / 500 in 273ms
+ GET /indicators 500 in 338ms
+ GET /icon.png?d1c3038d99b50dff 500 in 23462ms
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename '/home/comon/dev/comon/kenya-ranked/.next/cache/webpack/client-development-fallback/0.pack.gz_' -> '/home/comon/dev/comon/kenya-ranked/.next/cache/webpack/client-development-fallback/0.pack.gz'
+ GET /indicators 500 in 141ms
+ GET / 500 in 108ms
+ GET / 500 in 27ms

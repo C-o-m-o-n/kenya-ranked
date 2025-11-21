@@ -159,38 +159,14 @@ export async function getCorruptionPerceptionsIndex() {
     };
 }
 
+import { getKenyaHDI } from './undpData';
+
 /**
  * Get Human Development Index data
- * Note: UNDP API is discontinued, using latest known values
+ * Uses real data from UNDP
  */
 export async function getHumanDevelopmentIndex() {
-    return {
-        id: 'hdi-2022',
-        name: 'Human Development Index',
-        slug: 'human-development-index',
-        category: 'development' as const,
-        description: 'Composite index measuring average achievement in three basic dimensions of human development.',
-        year: 2022,
-        score: 0.601,
-        rank: 146,
-        totalCountries: 193,
-        trend: 'up' as const,
-        trendData: [
-            { year: 2017, value: 0.579 },
-            { year: 2018, value: 0.585 },
-            { year: 2019, value: 0.591 },
-            { year: 2020, value: 0.588 },
-            { year: 2021, value: 0.595 },
-            { year: 2022, value: 0.601 },
-        ],
-        source: 'UNDP - Human Development Report',
-        sourceUrl: 'https://hdr.undp.org/',
-        methodology: 'The HDI is a summary measure of average achievement in key dimensions of human development: a long and healthy life, being knowledgeable and have a decent standard of living.',
-        unit: 'Index (0-1)',
-        higherIsBetter: true,
-        lastUpdated: '2024-03-13',
-        updateFrequency: 'Annually',
-    };
+    return getKenyaHDI();
 }
 
 /**
