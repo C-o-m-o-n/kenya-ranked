@@ -3,6 +3,7 @@ import { Inter, IBM_Plex_Sans, Space_Mono } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
+import { Analytics } from "@vercel/analytics/next"
 
 const inter = Inter({
     subsets: ["latin"],
@@ -100,6 +101,7 @@ export default function RootLayout({
             <body
                 className={`${inter.variable} ${ibmPlexSans.variable} ${spaceMono.variable} font-sans`}
             >
+                <Analytics />
                 {/* Skip to content link for accessibility */}
                 <a
                     href="#main-content"

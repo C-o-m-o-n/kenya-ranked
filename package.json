@@ -10,6 +10,7 @@
     "seed": "tsx scripts/seedDatabase.ts"
   },
   "dependencies": {
+    "@vercel/analytics": "^1.5.0",
     "clsx": "^2.1.1",
     "lucide-react": "^0.294.0",
     "mongoose": "^8.20.1",
