@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import { Info } from 'lucide-react';
 import { InfoContent } from '@/types';
