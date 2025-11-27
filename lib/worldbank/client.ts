@@ -36,7 +36,7 @@ export async function fetchWorldBankData(options: WorldBankSearchOptions): Promi
 export async function searchDocuments(query: string, options: Partial<WorldBankSearchOptions> = {}): Promise<WorldBankResponse> {
   return fetchWorldBankData({
     qterm: query,
-    fl: 'id,display_title,abstracts,docdt,count,url,pdfurl,guid,entityids', // Default fields
+    fl: 'id,display_title,abstracts,docdt,count,url,pdfurl,guid,entityids,docty,topic,authr,majtheme', // Default fields
     ...options,
   });
 }
@@ -52,7 +52,7 @@ export async function getDocumentsByCountry(country: string = 'Kenya', options: 
   
   return fetchWorldBankData({
     count_exact: country,
-    fl: 'id,display_title,abstracts,docdt,count,url,pdfurl,guid,entityids',
+    fl: 'id,display_title,abstracts,docdt,count,url,pdfurl,guid,entityids,docty,topic,authr,majtheme',
     ...options,
   });
 }

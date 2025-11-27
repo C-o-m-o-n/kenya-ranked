@@ -12,6 +12,10 @@ export interface WorldBankDocument {
   entityids?: {
     entityid: string;
   };
+  docty?: string; // Document Type
+  topic?: string; // Topics
+  authr?: string; // Authors
+  majtheme?: string; // Major Theme
   // Add other fields as needed based on the API response
 }
 
