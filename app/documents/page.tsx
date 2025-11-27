@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import { getKenyaDocuments, searchWorldBankDocuments } from '@/lib/worldbank/services';
+import { WorldBankDocument } from '@/lib/worldbank/types';
 import DocumentSearch from '@/components/documents/DocumentSearch';
 import DocumentsList from '@/components/documents/DocumentsList';
 
@@ -18,7 +19,7 @@ interface PageProps {
 export default async function DocumentsPage({ searchParams }: PageProps) {
   const query = typeof searchParams.q === 'string' ? searchParams.q : undefined;
   
-  let documents;
+  let documents: WorldBankDocument[];
   try {
     if (query) {
       documents = await searchWorldBankDocuments(query, { rows: 12 });
