@@ -175,13 +175,29 @@ export async function fetchMPI() {
 // ============================================================================
 
 /**
+ * Helper to safely fetch data without throwing
+ */
+async function safeFetch<T>(promise: Promise<T>): Promise<T | undefined> {
+  try {
+    return await promise;
+  } catch (e) {
+    console.error('[HDRO Client] Fetch failed:', e);
+    return undefined;
+  }
+}
+
+// ============================================================================
+// BATCH FETCHING
+// ============================================================================
+
+/**
  * Fetch all core indices at once
  */
 export async function fetchCoreIndices() {
   const [hdi, ihdi, phdi] = await Promise.all([
-    fetchHDI(),
-    fetchIHDI(),
-    fetchPHDI(),
+    safeFetch(fetchHDI()),
+    safeFetch(fetchIHDI()),
+    safeFetch(fetchPHDI()),
   ]);
   
   return { hdi, ihdi, phdi };
@@ -192,8 +208,8 @@ export async function fetchCoreIndices() {
  */
 export async function fetchGenderMetrics() {
   const [gdi, gii] = await Promise.all([
-    fetchGDI(),
-    fetchGII(),
+    safeFetch(fetchGDI()),
+    safeFetch(fetchGII()),
   ]);
   
   return { gdi, gii };
@@ -204,9 +220,9 @@ export async function fetchGenderMetrics() {
  */
 export async function fetchEducationIndicators() {
   const [meanYears, expectedYears, secondary] = await Promise.all([
-    fetchMeanYearsSchooling(),
-    fetchExpectedYearsSchooling(),
-    fetchSecondaryEducation(),
+    safeFetch(fetchMeanYearsSchooling()),
+    safeFetch(fetchExpectedYearsSchooling()),
+    safeFetch(fetchSecondaryEducation()),
   ]);
   
   return { meanYears, expectedYears, secondary };
@@ -217,8 +233,8 @@ export async function fetchEducationIndicators() {
  */
 export async function fetchEconomicIndicators() {
   const [gni, labourForce] = await Promise.all([
-    fetchGNIPerCapita(),
-    fetchLabourForce(),
+    safeFetch(fetchGNIPerCapita()),
+    safeFetch(fetchLabourForce()),
   ]);
   
   return { gni, labourForce };
@@ -229,9 +245,9 @@ export async function fetchEconomicIndicators() {
  */
 export async function fetchHealthIndicators() {
   const [lifeExpectancy, maternalMortality, adolescentBirthRate] = await Promise.all([
-    fetchLifeExpectancy(),
-    fetchMaternalMortality(),
-    fetchAdolescentBirthRate(),
+    safeFetch(fetchLifeExpectancy()),
+    safeFetch(fetchMaternalMortality()),
+    safeFetch(fetchAdolescentBirthRate()),
   ]);
   
   return { lifeExpectancy, maternalMortality, adolescentBirthRate };
@@ -242,8 +258,8 @@ export async function fetchHealthIndicators() {
  */
 export async function fetchEnvironmentIndicators() {
   const [co2, materialFootprint] = await Promise.all([
-    fetchCO2Emissions(),
-    fetchMaterialFootprint(),
+    safeFetch(fetchCO2Emissions()),
+    safeFetch(fetchMaterialFootprint()),
   ]);
   
   return { co2, materialFootprint };
@@ -254,11 +270,11 @@ export async function fetchEnvironmentIndicators() {
  */
 export async function fetchLivingStandards() {
   const [electricity, water, sanitation, cookingFuel, housing] = await Promise.all([
-    fetchElectricityAccess(),
-    fetchWaterAccess(),
-    fetchSanitationAccess(),
-    fetchCookingFuelAccess(),
-    fetchHousingQuality(),
+    safeFetch(fetchElectricityAccess()),
+    safeFetch(fetchWaterAccess()),
+    safeFetch(fetchSanitationAccess()),
+    safeFetch(fetchCookingFuelAccess()),
+    safeFetch(fetchHousingQuality()),
   ]);
   
   return { electricity, water, sanitation, cookingFuel, housing };
@@ -269,8 +285,8 @@ export async function fetchLivingStandards() {
  */
 export async function fetchGovernanceIndicators() {
   const [parliament, mpi] = await Promise.all([
-    fetchParliamentRepresentation(),
-    fetchMPI(),
+    safeFetch(fetchParliamentRepresentation()),
+    safeFetch(fetchMPI()),
   ]);
   
   return { parliament, mpi };

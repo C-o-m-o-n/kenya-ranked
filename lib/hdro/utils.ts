@@ -8,13 +8,33 @@ const HDRO_API_KEY = process.env.HDRO_API_KEY || 'HDR-V279I4a6nHC2N58lJjXRpxBaN0
  */
 export async function fetchHDROData(countryCode: string): Promise<HDRORawDataItem[]> {
   const url = `${HDRO_API_BASE}/query?apikey=${HDRO_API_KEY}&countryOrAggregation=${countryCode}`;
-  const response = await fetch(url, { next: { revalidate: 3600 } });
+  // console.log(`[HDRO Utils] Fetching: ${url}`);
   
-  if (!response.ok) {
-    throw new Error(`HDRO API Error (${countryCode}): ${response.statusText}`);
+  try {
+    const response = await fetch(url, { 
+      next: { revalidate: 3600 },
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (compatible; KenyaRanked/1.0;)',
+        'Accept': 'application/json'
+      }
+    });
+    
+    if (!response.ok) {
+      throw new Error(`HDRO API Error (${countryCode}): ${response.status} ${response.statusText}`);
+    }
+
+    const contentType = response.headers.get('content-type');
+    if (contentType && contentType.includes('text/html')) {
+        const text = await response.text();
+        console.error(`[HDRO Utils] Received HTML instead of JSON:`, text.substring(0, 200));
+        throw new Error(`HDRO API returned HTML instead of JSON`);
+    }
+    
+    return response.json();
+  } catch (error) {
+    console.error(`[HDRO Utils] Fetch failed for ${countryCode}:`, error);
+    throw error;
   }
-  
-  return response.json();
 }
 
 /**
