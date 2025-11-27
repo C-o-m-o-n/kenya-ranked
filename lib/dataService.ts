@@ -45,7 +45,15 @@ async function getCachedData<T>(
  * Get all key indicators with caching
  */
 export async function getKeyIndicators(): Promise<Indicator[]> {
-    return getCachedData('keyIndicators', realData.getAllKeyIndicators);
+    console.log('📍 [DATA SERVICE] getKeyIndicators called');
+    try {
+        const result = await getCachedData('keyIndicators', realData.getAllKeyIndicators);
+        console.log('✅ [DATA SERVICE] getKeyIndicators result:', result);
+        return result;
+    } catch (error) {
+        console.error('🔴 [DATA SERVICE] getKeyIndicators error:', error);
+        return [];
+    }
 }
 
 /**

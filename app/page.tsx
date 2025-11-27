@@ -5,16 +5,14 @@ import BarChart from '@/components/charts/BarChart';
 import StructuredData from '@/components/seo/StructuredData';
 import { getKeyIndicators, getRegionalHDIComparison } from '@/lib/dataService';
 import { indicatorTooltips } from '@/data/tooltips';
-import { regionalComparisons as staticRegionalComparisons } from '@/data/staticData';
 import { ArrowRight } from 'lucide-react';
-import axios from 'axios';
 
 export const metadata: Metadata = {
     title: 'Kenya Ranked',
-    description: 'Track Kenya\'s performance across global indices: governance, corruption, poverty, HDI, SDGs, and more. Data-driven insights from authoritative international sources.',
+    description: 'Track Kenya\'s Human Development Index from official UNDP data sources.',
     openGraph: {
-        title: 'Kenya Ranked | See how Kenya stands in the world',
-        description: 'Track Kenya\'s performance across global indices through data, not opinions.',
+        title: 'Kenya Ranked | Human Development Index',
+        description: 'Track Kenya\'s Human Development Index through data from UNDP.',
         url: 'https://kenyaranked.com',
         type: 'website',
     },
@@ -24,48 +22,27 @@ export const metadata: Metadata = {
 export const revalidate = 21600;
 
 const categories = [
-    { name: 'Governance', slug: 'governance', icon: '⚖️', color: 'bg-blue-500' },
-    { name: 'Economy', slug: 'economy', icon: '💰', color: 'bg-green-500' },
-    { name: 'Society', slug: 'society', icon: '👥', color: 'bg-purple-500' },
-    { name: 'SDGs', slug: 'sdg', icon: '🎯', color: 'bg-cyan-500' },
-    { name: 'Health', slug: 'health', icon: '🏥', color: 'bg-red-500' },
-    { name: 'Education', slug: 'education', icon: '📚', color: 'bg-yellow-500' },
     { name: 'Development', slug: 'development', icon: '📈', color: 'bg-indigo-500' },
-    { name: 'Corruption', slug: 'corruption', icon: '🔍', color: 'bg-orange-500' },
 ];
 
 export default async function HomePage() {
-    // Fetch real data from APIs
+    // Fetch HDI data from UNDP HDRO API
     const keyIndicators = await getKeyIndicators();
 
     // Fetch regional HDI comparison data from HDRO API
     const hdiComparisonData = await getRegionalHDIComparison();
 
-    // Create home metrics from key indicators
-    const homeMetrics = keyIndicators.slice(0, 6).map(indicator => ({
+    // Create home metrics - only HDI
+    const homeMetrics = keyIndicators.map(indicator => ({
         title: indicator.name,
-        value: typeof indicator.score === 'number' ? indicator.score.toLocaleString('en-US', { maximumFractionDigits: 2 }) : indicator.score,
+        value: typeof indicator.score === 'number' ? indicator.score.toLocaleString('en-US', { maximumFractionDigits: 3 }) : indicator.score,
         rank: `${indicator.rank}/${indicator.totalCountries}`,
         trend: indicator.trend,
         change: indicator.trendData.length >= 2
-            ? `${indicator.trendData[indicator.trendData.length - 1].value - indicator.trendData[indicator.trendData.length - 2].value > 0 ? '+' : ''}${(indicator.trendData[indicator.trendData.length - 1].value - indicator.trendData[indicator.trendData.length - 2].value).toFixed(1)}`
+            ? `${indicator.trendData[indicator.trendData.length - 1].value - indicator.trendData[indicator.trendData.length - 2].value > 0 ? '+' : ''}${(indicator.trendData[indicator.trendData.length - 1].value - indicator.trendData[indicator.trendData.length - 2].value).toFixed(3)}`
             : undefined,
         category: indicator.category,
     }));
-
-    // Combine dynamic HDI data with static data for other indicators
-    const regionalComparisons: Record<string, { country: string; value: number }[]> = {
-        ...staticRegionalComparisons,
-        'human-development-index': hdiComparisonData,
-    };
-
-
-    const myOwnHdiFetcher = async () => {
-        const hdiData = await axios.get('/api/hdi');
-        console.log(hdiData)
-        return hdiData;
-    }
-
 
     return (
         <>
@@ -296,25 +273,16 @@ export default async function HomePage() {
                                 Kenya vs Region vs World
                             </h2>
                             <p className="text-lg text-slate-light">
-                                Comparing Kenya's performance with regional and global averages
+                                Comparing Kenya's Human Development Index with regional and global averages
                             </p>
                         </div>
 
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                            <div className="card">
-                                <BarChart
-                                    data={regionalComparisons['corruption-perceptions-index']}
-                                    title="Corruption Perceptions Index"
-                                    yAxisLabel="Score (0-100)"
-                                />
-                            </div>
-                            <div className="card">
-                                <BarChart
-                                    data={regionalComparisons['human-development-index']}
-                                    title="Human Development Index"
-                                    yAxisLabel="Index (0-1)"
-                                />
-                            </div>
+                        <div className="card max-w-4xl mx-auto">
+                            <BarChart
+                                data={hdiComparisonData}
+                                title="Human Development Index"
+                                yAxisLabel="Index (0-1)"
+                            />
                         </div>
                     </div>
                 </section>
