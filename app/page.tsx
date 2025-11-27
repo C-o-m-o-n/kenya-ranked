@@ -32,11 +32,17 @@ export default async function HomePage() {
     // Fetch regional HDI comparison data from HDRO API
     const hdiComparisonData = await getRegionalHDIComparison();
 
-    // Create home metrics - only HDI
+    // Create home metrics
     const homeMetrics = keyIndicators.map(indicator => ({
         title: indicator.name,
-        value: typeof indicator.score === 'number' ? indicator.score.toLocaleString('en-US', { maximumFractionDigits: 3 }) : indicator.score,
-        rank: `${indicator.rank}/${indicator.totalCountries}`,
+        value: typeof indicator.score === 'number' ? 
+            (indicator.unit?.includes('Index') ? indicator.score.toFixed(3) : 
+             indicator.unit?.includes('Percentage') ? `${indicator.score.toFixed(1)}%` :
+             indicator.unit?.includes('Years') ? `${indicator.score.toFixed(1)} yrs` :
+             indicator.unit?.includes('$') ? `$${indicator.score.toLocaleString()}` :
+             indicator.score.toLocaleString()) 
+            : indicator.score,
+        rank: indicator.rank > 0 ? `${indicator.rank}/${indicator.totalCountries}` : undefined,
         trend: indicator.trend,
         change: indicator.trendData.length >= 2
             ? `${indicator.trendData[indicator.trendData.length - 1].value - indicator.trendData[indicator.trendData.length - 2].value > 0 ? '+' : ''}${(indicator.trendData[indicator.trendData.length - 1].value - indicator.trendData[indicator.trendData.length - 2].value).toFixed(3)}`
@@ -82,8 +88,8 @@ export default async function HomePage() {
                                     See how Kenya stands in the world — through data, not opinions.
                                 </p>
                                 <div className="flex flex-wrap gap-4">
-                                    <Link href="/indicators" className="btn-primary bg-kenya-green hover:bg-kenya-green/90">
-                                        Explore Indicators
+                                    <Link href="/indicators/hdro" className="btn-primary bg-kenya-green hover:bg-kenya-green/90">
+                                        Explore HDRO Dashboard
                                         <ArrowRight className="inline-block ml-2 h-5 w-5" />
                                     </Link>
                                     <Link href="/sdg" className="btn-secondary bg-white/10 hover:bg-white/20 border-white/30 text-white">
@@ -302,7 +308,8 @@ export default async function HomePage() {
                         {categories.map((category) => (
                             <Link
                                 key={category.slug}
-                                href={`/indicators?category=${category.slug}`}
+                                // href={`/indicators?category=${category.slug}`}
+                                href="/indicators/hdro"
                                 className="card group hover:scale-105 transition-all duration-200"
                             >
                                 <div className="flex flex-col items-center text-center space-y-3">
