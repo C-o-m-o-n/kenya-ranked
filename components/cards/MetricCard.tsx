@@ -12,7 +12,7 @@ import DataFreshness from '@/components/ui/DataFreshness';
 interface MetricCardProps {
     title: string;
     value: string | number;
-    rank: string;
+    rank?: string;
     trend: TrendDirection;
     change?: string;
     totalCountries?: number;
@@ -47,9 +47,14 @@ export default function MetricCard({
                 ? 'text-data-red'
                 : 'text-slate-light';
 
-    // Extract rank numbers for badge color
-    const [currentRank, total] = rank.split('/').map(Number);
-    const badgeColor = getPerformanceBadgeColor(currentRank, total);
+    // Extract rank numbers for badge color if rank exists
+    let badgeColor = 'bg-slate-100 text-slate-800 border-slate-200';
+    if (rank) {
+        const [currentRank, total] = rank.split('/').map(Number);
+        if (!isNaN(currentRank) && !isNaN(total)) {
+            badgeColor = getPerformanceBadgeColor(currentRank, total);
+        }
+    }
 
     return (
         <>
@@ -73,9 +78,13 @@ export default function MetricCard({
 
                     {/* Rank and Trend */}
                     <div className="flex items-center justify-between">
-                        <span className={`rank-badge ${badgeColor}`}>
-                            Rank: {rank}
-                        </span>
+                        {rank ? (
+                            <span className={`rank-badge ${badgeColor}`}>
+                                Rank: {rank}
+                            </span>
+                        ) : (
+                            <span></span>
+                        )}
 
                         <div className={`flex items-center gap-1 ${trendColor}`}>
                             <TrendIcon className="h-4 w-4" aria-hidden="true" />

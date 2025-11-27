@@ -45,22 +45,42 @@ async function getCachedData<T>(
  * Get all key indicators with caching
  */
 export async function getKeyIndicators(): Promise<Indicator[]> {
-    return getCachedData('keyIndicators', realData.getAllKeyIndicators);
+    console.log('📍 [DATA SERVICE] getKeyIndicators called');
+    try {
+        // Import dynamically to avoid circular dependencies
+        const { getKeyHDROIndicatorsAsStandard } = await import('./hdro/adapter');
+        const result = await getKeyHDROIndicatorsAsStandard();
+        console.log('✅ [DATA SERVICE] getKeyIndicators result:', result.length);
+        return result;
+    } catch (error) {
+        console.error('🔴 [DATA SERVICE] getKeyIndicators error:', error);
+        return [];
+    }
 }
 
 /**
  * Get specific indicator by slug
  */
 export async function getIndicatorBySlug(slug: string): Promise<Indicator | undefined> {
-    const indicators = await getKeyIndicators();
-    return indicators.find(ind => ind.slug === slug);
+    const indicators = await getAllIndicators();
+    return indicators.find(ind => ind.slug === slug || ind.slug === `hdro/${slug}`);
 }
 
 /**
- * Get all indicators (for now, same as key indicators)
+ * Get all indicators (combines HDRO and other sources)
  */
 export async function getAllIndicators(): Promise<Indicator[]> {
-    return getKeyIndicators();
+    try {
+        // Import dynamically to avoid circular dependencies if any
+        const { getAllHDROIndicatorsAsStandard } = await import('./hdro/adapter');
+        const hdroIndicators = await getAllHDROIndicatorsAsStandard();
+        
+        // We can add other sources here in the future
+        return hdroIndicators;
+    } catch (error) {
+        console.error('Error fetching all indicators:', error);
+        return [];
+    }
 }
 
 /**
@@ -105,4 +125,18 @@ export async function getAllSDGGoals(): Promise<SDGGoal[]> {
 export async function getSDGGoalBySlug(slug: string): Promise<SDGGoal | undefined> {
     const goals = await getAllSDGGoals();
     return goals.find(goal => goal.slug === slug);
+}
+
+/**
+ * Get regional HDI comparison data from HDRO API
+ */
+export async function getRegionalHDIComparison() {
+    try {
+        const { fetchHDI } = await import('./hdro/client');
+        const hdiData = await fetchHDI();
+        return hdiData.comparison;
+    } catch (error) {
+        console.error('Error fetching regional HDI comparison:', error);
+        return [];
+    }
 }

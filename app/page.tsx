@@ -3,17 +3,16 @@ import { Metadata } from 'next';
 import MetricCard from '@/components/cards/MetricCard';
 import BarChart from '@/components/charts/BarChart';
 import StructuredData from '@/components/seo/StructuredData';
-import { getKeyIndicators } from '@/lib/dataService';
+import { getKeyIndicators, getRegionalHDIComparison } from '@/lib/dataService';
 import { indicatorTooltips } from '@/data/tooltips';
-import { regionalComparisons } from '@/data/staticData';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Github, MessageSquare } from 'lucide-react';
 
 export const metadata: Metadata = {
     title: 'Kenya Ranked',
-    description: 'Track Kenya\'s performance across global indices: governance, corruption, poverty, HDI, SDGs, and more. Data-driven insights from authoritative international sources.',
+    description: 'Track Kenya\'s Human Development Index from official UNDP data sources.',
     openGraph: {
-        title: 'Kenya Ranked | See how Kenya stands in the world',
-        description: 'Track Kenya\'s performance across global indices through data, not opinions.',
+        title: 'Kenya Ranked | Human Development Index',
+        description: 'Track Kenya\'s Human Development Index through data from UNDP.',
         url: 'https://kenyaranked.com',
         type: 'website',
     },
@@ -23,32 +22,33 @@ export const metadata: Metadata = {
 export const revalidate = 21600;
 
 const categories = [
-    { name: 'Governance', slug: 'governance', icon: '⚖️', color: 'bg-blue-500' },
-    { name: 'Economy', slug: 'economy', icon: '💰', color: 'bg-green-500' },
-    { name: 'Society', slug: 'society', icon: '👥', color: 'bg-purple-500' },
-    { name: 'SDGs', slug: 'sdg', icon: '🎯', color: 'bg-cyan-500' },
-    { name: 'Health', slug: 'health', icon: '🏥', color: 'bg-red-500' },
-    { name: 'Education', slug: 'education', icon: '📚', color: 'bg-yellow-500' },
     { name: 'Development', slug: 'development', icon: '📈', color: 'bg-indigo-500' },
-    { name: 'Corruption', slug: 'corruption', icon: '🔍', color: 'bg-orange-500' },
 ];
 
 export default async function HomePage() {
-    // Fetch real data from APIs
+    // Fetch HDI data from UNDP HDRO API
     const keyIndicators = await getKeyIndicators();
 
-    // Create home metrics from key indicators
-    const homeMetrics = keyIndicators.slice(0, 6).map(indicator => ({
+    // Fetch regional HDI comparison data from HDRO API
+    const hdiComparisonData = await getRegionalHDIComparison();
+
+    // Create home metrics
+    const homeMetrics = keyIndicators.map(indicator => ({
         title: indicator.name,
-        value: typeof indicator.score === 'number' ? indicator.score.toLocaleString('en-US', { maximumFractionDigits: 2 }) : indicator.score,
-        rank: `${indicator.rank}/${indicator.totalCountries}`,
+        value: typeof indicator.score === 'number' ? 
+            (indicator.unit?.includes('Index') ? indicator.score.toFixed(3) : 
+             indicator.unit?.includes('Percentage') ? `${indicator.score.toFixed(1)}%` :
+             indicator.unit?.includes('Years') ? `${indicator.score.toFixed(1)} yrs` :
+             indicator.unit?.includes('$') ? `$${indicator.score.toLocaleString()}` :
+             indicator.score.toLocaleString()) 
+            : indicator.score,
+        rank: indicator.rank > 0 ? `${indicator.rank}/${indicator.totalCountries}` : undefined,
         trend: indicator.trend,
         change: indicator.trendData.length >= 2
-            ? `${indicator.trendData[indicator.trendData.length - 1].value - indicator.trendData[indicator.trendData.length - 2].value > 0 ? '+' : ''}${(indicator.trendData[indicator.trendData.length - 1].value - indicator.trendData[indicator.trendData.length - 2].value).toFixed(1)}`
+            ? `${indicator.trendData[indicator.trendData.length - 1].value - indicator.trendData[indicator.trendData.length - 2].value > 0 ? '+' : ''}${(indicator.trendData[indicator.trendData.length - 1].value - indicator.trendData[indicator.trendData.length - 2].value).toFixed(3)}`
             : undefined,
         category: indicator.category,
     }));
-
 
     return (
         <>
@@ -88,8 +88,8 @@ export default async function HomePage() {
                                     See how Kenya stands in the world — through data, not opinions.
                                 </p>
                                 <div className="flex flex-wrap gap-4">
-                                    <Link href="/indicators" className="btn-primary bg-kenya-green hover:bg-kenya-green/90">
-                                        Explore Indicators
+                                    <Link href="/indicators/hdro" className="btn-primary bg-kenya-green hover:bg-kenya-green/90">
+                                        Explore HDRO Dashboard
                                         <ArrowRight className="inline-block ml-2 h-5 w-5" />
                                     </Link>
                                     <Link href="/sdg" className="btn-secondary bg-white/10 hover:bg-white/20 border-white/30 text-white">
@@ -279,25 +279,16 @@ export default async function HomePage() {
                                 Kenya vs Region vs World
                             </h2>
                             <p className="text-lg text-slate-light">
-                                Comparing Kenya's performance with regional and global averages
+                                Comparing Kenya's Human Development Index with regional and global averages
                             </p>
                         </div>
 
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                            <div className="card">
-                                <BarChart
-                                    data={regionalComparisons['corruption-perceptions-index']}
-                                    title="Corruption Perceptions Index"
-                                    yAxisLabel="Score (0-100)"
-                                />
-                            </div>
-                            <div className="card">
-                                <BarChart
-                                    data={regionalComparisons['human-development-index']}
-                                    title="Human Development Index"
-                                    yAxisLabel="Index (0-1)"
-                                />
-                            </div>
+                        <div className="card max-w-4xl mx-auto">
+                            <BarChart
+                                data={hdiComparisonData}
+                                title="Human Development Index"
+                                yAxisLabel="Index (0-1)"
+                            />
                         </div>
                     </div>
                 </section>
@@ -317,7 +308,8 @@ export default async function HomePage() {
                         {categories.map((category) => (
                             <Link
                                 key={category.slug}
-                                href={`/indicators?category=${category.slug}`}
+                                // href={`/indicators?category=${category.slug}`}
+                                href="/indicators/hdro"
                                 className="card group hover:scale-105 transition-all duration-200"
                             >
                                 <div className="flex flex-col items-center text-center space-y-3">
@@ -347,6 +339,40 @@ export default async function HomePage() {
                             Go to Comparison Tool
                             <ArrowRight className="inline-block ml-2 h-5 w-5" />
                         </Link>
+                    </div>
+                </section>
+
+                {/* Join the Community */}
+                <section className="bg-slate-900 text-white py-16 border-t border-white/10">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                        <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6 text-white">
+                            Join the Community
+                        </h2>
+                        <p className="text-lg md:text-xl text-slate-300 mb-10 max-w-3xl mx-auto leading-relaxed">
+                            Kenya Ranked is an open-source initiative dedicated to making development data accessible and actionable for everyone. 
+                            We believe in the power of community-driven data to foster transparency and progress. 
+                            Whether you're a developer, data scientist, or policy enthusiast, your contribution can make a difference.
+                        </p>
+                        <div className="flex flex-wrap justify-center gap-4">
+                            <a 
+                                href="https://github.com/C-o-m-o-n/kenya-ranked" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="btn-secondary bg-white/10 hover:bg-white/20 border-white/30 text-white flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all"
+                            >
+                                <Github className="h-5 w-5" />
+                                Contribute on GitHub
+                            </a>
+                            <a 
+                                href="https://discord.gg/eqSU46Y7xW" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="btn-primary bg-[#5865F2] hover:bg-[#4752C4] border-transparent text-white flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all"
+                            >
+                                <MessageSquare className="h-5 w-5" />
+                                Join Discord Community
+                            </a>
+                        </div>
                     </div>
                 </section>
             </div>
