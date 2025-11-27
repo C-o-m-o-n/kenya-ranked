@@ -5,7 +5,7 @@ import BarChart from '@/components/charts/BarChart';
 import StructuredData from '@/components/seo/StructuredData';
 import { getKeyIndicators, getRegionalHDIComparison } from '@/lib/dataService';
 import { indicatorTooltips } from '@/data/tooltips';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Github, MessageSquare } from 'lucide-react';
 
 export const metadata: Metadata = {
     title: 'Kenya Ranked',
@@ -339,6 +339,40 @@ export default async function HomePage() {
                             Go to Comparison Tool
                             <ArrowRight className="inline-block ml-2 h-5 w-5" />
                         </Link>
+                    </div>
+                </section>
+
+                {/* Join the Community */}
+                <section className="bg-slate-900 text-white py-16 border-t border-white/10">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                        <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6 text-white">
+                            Join the Community
+                        </h2>
+                        <p className="text-lg md:text-xl text-slate-300 mb-10 max-w-3xl mx-auto leading-relaxed">
+                            Kenya Ranked is an open-source initiative dedicated to making development data accessible and actionable for everyone. 
+                            We believe in the power of community-driven data to foster transparency and progress. 
+                            Whether you're a developer, data scientist, or policy enthusiast, your contribution can make a difference.
+                        </p>
+                        <div className="flex flex-wrap justify-center gap-4">
+                            <a 
+                                href="https://github.com/C-o-m-o-n/kenya-ranked" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="btn-secondary bg-white/10 hover:bg-white/20 border-white/30 text-white flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all"
+                            >
+                                <Github className="h-5 w-5" />
+                                Contribute on GitHub
+                            </a>
+                            <a 
+                                href="https://discord.gg/eqSU46Y7xW" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="btn-primary bg-[#5865F2] hover:bg-[#4752C4] border-transparent text-white flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all"
+                            >
+                                <MessageSquare className="h-5 w-5" />
+                                Join Discord Community
+                            </a>
+                        </div>
                     </div>
                 </section>
             </div>
