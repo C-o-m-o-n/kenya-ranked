@@ -5,7 +5,7 @@ import BarChart from '@/components/charts/BarChart';
 import StructuredData from '@/components/seo/StructuredData';
 import { getKeyIndicators, getRegionalHDIComparison } from '@/lib/dataService';
 import { indicatorTooltips } from '@/data/tooltips';
-import { ArrowRight, Github, MessageSquare } from 'lucide-react';
+import { ArrowRight, Github, MessageSquare, BookOpen } from 'lucide-react';
 
 export const metadata: Metadata = {
     title: 'Kenya Ranked',
@@ -372,6 +372,13 @@ export default async function HomePage() {
                                 <MessageSquare className="h-5 w-5" />
                                 Join Discord Community
                             </a>
+                            <Link 
+                                href="/contribute" 
+                                className="btn-secondary bg-white/10 hover:bg-white/20 border-white/30 text-white flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all"
+                            >
+                                <BookOpen className="h-5 w-5" />
+                                Read Guidelines
+                            </Link>
                         </div>
                     </div>
                 </section>
