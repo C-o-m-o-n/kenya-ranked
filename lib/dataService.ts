@@ -62,7 +62,12 @@ export async function getKeyIndicators(): Promise<Indicator[]> {
  */
 export async function getIndicatorBySlug(slug: string): Promise<Indicator | undefined> {
     const indicators = await getAllIndicators();
-    return indicators.find(ind => ind.slug === slug || ind.slug === `hdro/${slug}`);
+    // Check for exact match, or namespaced match (hdro/ or who/)
+    return indicators.find(ind => 
+        ind.slug === slug || 
+        ind.slug === `hdro/${slug}` || 
+        ind.slug === `who/${slug}`
+    );
 }
 
 /**
@@ -73,9 +78,17 @@ export async function getAllIndicators(): Promise<Indicator[]> {
         // Import dynamically to avoid circular dependencies if any
         const { getAllHDROIndicatorsAsStandard } = await import('./hdro/adapter');
         const hdroIndicators = await getAllHDROIndicatorsAsStandard();
+
+        // Fetch WHO Life Expectancy as a test/example (WHOSIS_000001)
+        const { getWhoIndicatorAsStandard } = await import('./dataFetchers/who/adapter');
+        const whoLifeExpectancy = await getWhoIndicatorAsStandard('WHOSIS_000001');
         
-        // We can add other sources here in the future
-        return hdroIndicators;
+        const allIndicators = [...hdroIndicators];
+        if (whoLifeExpectancy) {
+            allIndicators.push(whoLifeExpectancy);
+        }
+        
+        return allIndicators;
     } catch (error) {
         console.error('Error fetching all indicators:', error);
         return [];
