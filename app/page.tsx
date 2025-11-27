@@ -29,6 +29,8 @@ export default async function HomePage() {
     // Fetch HDI data from UNDP HDRO API
     const keyIndicators = await getKeyIndicators();
 
+    console.log('📍 [DATA SERVICE] getKeyIndicators resultjnsjdgvjbsjbjksj:', keyIndicators.length);
+
     // Fetch regional HDI comparison data from HDRO API
     const hdiComparisonData = await getRegionalHDIComparison();
 

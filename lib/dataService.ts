@@ -1,6 +1,5 @@
 // Data service layer - combines real API data with cached/fallback data
 import type { Indicator } from '@/types';
-import * as realData from './dataFetchers/realData';
 
 // Cache duration in milliseconds (1 hour)
 const CACHE_DURATION = 60 * 60 * 1000;
