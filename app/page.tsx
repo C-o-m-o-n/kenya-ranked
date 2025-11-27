@@ -25,6 +25,7 @@ export const revalidate = 21600;
 
 const categories = [
     { name: 'Development', slug: 'development', icon: '📈', color: 'bg-indigo-500' },
+    { name: 'Corruption', slug: 'corruption', icon: '🔍', color: 'bg-orange-500' },
 ];
 
 export default async function HomePage() {
@@ -346,8 +347,7 @@ export default async function HomePage() {
                         {categories.map((category) => (
                             <Link
                                 key={category.slug}
-                                // href={`/indicators?category=${category.slug}`}
-                                href="/indicators/hdro"
+                                href={category.slug === 'corruption' ? '/indicators/cpi' : '/indicators/hdro'}
                                 className="card group hover:scale-105 transition-all duration-200"
                             >
                                 <div className="flex flex-col items-center text-center space-y-3">
