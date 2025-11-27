@@ -6,6 +6,8 @@ import StructuredData from '@/components/seo/StructuredData';
 import { getKeyIndicators, getRegionalHDIComparison } from '@/lib/dataService';
 import { indicatorTooltips } from '@/data/tooltips';
 import { ArrowRight, Github, MessageSquare, BookOpen } from 'lucide-react';
+import { getKenyaDocuments } from '@/lib/worldbank/services';
+import DocumentCard from '@/components/documents/DocumentCard';
 
 export const metadata: Metadata = {
     title: 'Kenya Ranked',
@@ -33,6 +35,9 @@ export default async function HomePage() {
 
     // Fetch regional HDI comparison data from HDRO API
     const hdiComparisonData = await getRegionalHDIComparison();
+
+    // Fetch latest World Bank documents
+    const latestDocuments = await getKenyaDocuments({ rows: 3 });
 
     // Create home metrics
     const homeMetrics = keyIndicators.map(indicator => ({
@@ -270,6 +275,37 @@ export default async function HomePage() {
                                 />
                             );
                         })}
+                    </div>
+                </section>
+
+                {/* Latest World Bank Reports */}
+                <section className="bg-slate-50 py-16 border-y border-slate-200">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="flex justify-between items-end mb-12">
+                            <div>
+                                <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-4">
+                                    Latest World Bank Reports
+                                </h2>
+                                <p className="text-lg text-slate-light">
+                                    Recent publications and research on Kenya's development
+                                </p>
+                            </div>
+                            <Link href="/documents" className="hidden md:flex items-center text-primary font-semibold hover:text-primary-dark transition-colors">
+                                View All Documents <ArrowRight className="ml-2 h-5 w-5" />
+                            </Link>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {latestDocuments.map((doc) => (
+                                <DocumentCard key={doc.id} document={doc} />
+                            ))}
+                        </div>
+
+                        <div className="mt-8 text-center md:hidden">
+                            <Link href="/documents" className="btn-secondary inline-flex items-center">
+                                View All Documents <ArrowRight className="ml-2 h-5 w-5" />
+                            </Link>
+                        </div>
                     </div>
                 </section>
 
