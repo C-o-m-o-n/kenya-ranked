@@ -49,6 +49,14 @@ export async function getKeyIndicators(): Promise<Indicator[]> {
         // Import dynamically to avoid circular dependencies
         const { getKeyHDROIndicatorsAsStandard } = await import('./hdro/adapter');
         const result = await getKeyHDROIndicatorsAsStandard();
+        
+        // Add CPI to key indicators
+        const { getTransparencyIndicatorAsStandard } = await import('./dataFetchers/transparencyIntl');
+        const cpi = await getTransparencyIndicatorAsStandard();
+        if (cpi) {
+            result.push(cpi);
+        }
+
         console.log('✅ [DATA SERVICE] getKeyIndicators result:', result.length);
         return result;
     } catch (error) {
@@ -62,7 +70,18 @@ export async function getKeyIndicators(): Promise<Indicator[]> {
  */
 export async function getIndicatorBySlug(slug: string): Promise<Indicator | undefined> {
     const indicators = await getAllIndicators();
-    return indicators.find(ind => ind.slug === slug || ind.slug === `hdro/${slug}`);
+    console.log('🔍 [DATA SERVICE] getIndicatorBySlug called with slug:', slug);
+    console.log('🔍 [DATA SERVICE] Available indicators:', indicators.map(i => i.slug));
+    
+    // Check for exact match, or namespaced match (hdro/ or who/)
+    const result = indicators.find(ind => 
+        ind.slug === slug || 
+        ind.slug === `hdro/${slug}` || 
+        ind.slug === `who/${slug}`
+    );
+    
+    console.log('🔍 [DATA SERVICE] getIndicatorBySlug result:', result ? result.slug : 'NOT FOUND');
+    return result;
 }
 
 /**
@@ -73,9 +92,24 @@ export async function getAllIndicators(): Promise<Indicator[]> {
         // Import dynamically to avoid circular dependencies if any
         const { getAllHDROIndicatorsAsStandard } = await import('./hdro/adapter');
         const hdroIndicators = await getAllHDROIndicatorsAsStandard();
+
+        // Fetch WHO Life Expectancy as a test/example (WHOSIS_000001)
+        const { getWhoIndicatorAsStandard } = await import('./dataFetchers/who/adapter');
+        const whoLifeExpectancy = await getWhoIndicatorAsStandard('WHOSIS_000001');
         
-        // We can add other sources here in the future
-        return hdroIndicators;
+        const allIndicators = [...hdroIndicators];
+        if (whoLifeExpectancy) {
+            allIndicators.push(whoLifeExpectancy);
+        }
+
+        // Fetch CPI
+        const { getTransparencyIndicatorAsStandard } = await import('./dataFetchers/transparencyIntl');
+        const cpi = await getTransparencyIndicatorAsStandard();
+        if (cpi) {
+            allIndicators.push(cpi);
+        }
+        
+        return allIndicators;
     } catch (error) {
         console.error('Error fetching all indicators:', error);
         return [];
